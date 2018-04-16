@@ -1,5 +1,9 @@
 package com.kuiiz.matematicaplay.operacao.service;
 
+import static com.kuiiz.matematicaplay.operacao.domain.enums.Operador.SOMA;
+import static com.kuiiz.matematicaplay.operacao.domain.enums.Operador.SUBTRACAO;
+import static com.kuiiz.matematicaplay.operacao.domain.enums.Operador.MULTIPLICACAO;
+import static com.kuiiz.matematicaplay.operacao.domain.enums.Operador.DIVISAO;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
@@ -26,14 +30,44 @@ public class OperacaoServiceTest {
 	private OperacaoService operacaoService;
 	
 	@Test
-	public void testCriaUmaOperacaoAleatoria() {
-		
+	public void testCriaUmaOperacaoDeSoma() {		
+		comOperadorEFatores(SOMA, 100, 50, 150);
+	}
+	
+	@Test
+	public void testCriaUmaOperacaoDeSubtracao() {
+		comOperadorEFatores(SUBTRACAO, 100, 50, 50);
+	}
+	
+	@Test
+	public void testCriaUmaOperacaoDeMultiplicacao() {
+		comOperadorEFatores(MULTIPLICACAO, 100, 50, 5000);
+	}
+	
+	@Test
+	public void testCriaUmaOperacaoDeDivisao() {
+		comOperadorEFatores(DIVISAO, 100, 50, 2);
+	}
+	
+	
+	/**
+	 * ComOperadorEFatores
+	 * @param operador
+	 * @param fatorA
+	 * @param fatorB
+	 * @param resultado
+	 */
+	private void comOperadorEFatores(Operador operador, int fatorA, int fatorB, int resultado) {
+	
 		/**
 		 * Dado a chamada de geradorService.geraFator(), deve me retornar 100 e 50
-		 * Dado a chamada de gerarOperador(), deve me retornar a operação soma (Operador.SOMA)
 		 */
-		given(geradorService.geraFator()).willReturn(100, 50);
-		given(geradorService.geraOperador()).willReturn(Operador.SOMA);
+		given(geradorService.geraFator()).willReturn(fatorA, fatorB);
+		
+		/**
+		 * Dado a chamada de gerarOperador(), deve me retornar a operação soma (Operador.DIVISAO)
+		 */
+		given(geradorService.geraOperador()).willReturn(operador);
 		
 		/**
 		 * Quando eu chamar o método operacaoService.criaUmaOperacaoRadomica()
@@ -43,11 +77,10 @@ public class OperacaoServiceTest {
 		/**
 		 * Então devo ter os seguintes resultados
 		 */
-		assertThat(operacao.getFatorA()).isEqualTo(100);
-		assertThat(operacao.getFatorB()).isEqualTo(50);
-		assertThat(operacao.getOperador()).isEqualTo(Operador.SOMA);
-		assertThat(operacao.getResultado()).isEqualTo(150);
-		
+		assertThat(operacao.getFatorA()).isEqualTo(fatorA);
+		assertThat(operacao.getFatorB()).isEqualTo(fatorB);
+		assertThat(operacao.getOperador()).isEqualTo(operador);
+		assertThat(operacao.getResultado()).isEqualTo(resultado);
 	}
 	
 
