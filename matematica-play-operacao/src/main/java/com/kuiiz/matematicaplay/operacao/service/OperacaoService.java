@@ -9,6 +9,6 @@ public interface OperacaoService {
 	 * Cria uma oeração randomica com fatores de 11 a 99
 	 * @return
 	 */
-	Operacao criaUmaOperacaoRadomica();
+	Operacao criaUmaOperacaoAleatoria();
 
 }

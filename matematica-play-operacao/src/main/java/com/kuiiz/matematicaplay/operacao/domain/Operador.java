@@ -1,4 +1,4 @@
-package com.kuiiz.matematicaplay.operacao.domain.enums;
+package com.kuiiz.matematicaplay.operacao.domain;
 
 import java.util.stream.Stream;
 

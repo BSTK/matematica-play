@@ -1,9 +1,9 @@
 package com.kuiiz.matematicaplay.operacao.service;
 
-import static com.kuiiz.matematicaplay.operacao.domain.enums.Operador.SOMA;
-import static com.kuiiz.matematicaplay.operacao.domain.enums.Operador.SUBTRACAO;
-import static com.kuiiz.matematicaplay.operacao.domain.enums.Operador.MULTIPLICACAO;
-import static com.kuiiz.matematicaplay.operacao.domain.enums.Operador.DIVISAO;
+import static com.kuiiz.matematicaplay.operacao.domain.Operador.DIVISAO;
+import static com.kuiiz.matematicaplay.operacao.domain.Operador.MULTIPLICACAO;
+import static com.kuiiz.matematicaplay.operacao.domain.Operador.SOMA;
+import static com.kuiiz.matematicaplay.operacao.domain.Operador.SUBTRACAO;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
@@ -15,7 +15,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.kuiiz.matematicaplay.operacao.domain.Operacao;
-import com.kuiiz.matematicaplay.operacao.domain.enums.Operador;
+import com.kuiiz.matematicaplay.operacao.domain.Operador;
 
 
 @SpringBootTest
@@ -24,28 +24,16 @@ public class OperacaoServiceTest {
 	
 	
 	@MockBean
-	public GeradorRandomicoService geradorService;
+	public GeradorAleatorioService geradorService;
 	
 	@Autowired
 	private OperacaoService operacaoService;
 	
 	@Test
-	public void testCriaUmaOperacaoDeSoma() {		
+	public void testCriaUmaOperacaoEValidandoOResultado() {		
 		comOperadorEFatores(SOMA, 100, 50, 150);
-	}
-	
-	@Test
-	public void testCriaUmaOperacaoDeSubtracao() {
 		comOperadorEFatores(SUBTRACAO, 100, 50, 50);
-	}
-	
-	@Test
-	public void testCriaUmaOperacaoDeMultiplicacao() {
 		comOperadorEFatores(MULTIPLICACAO, 100, 50, 5000);
-	}
-	
-	@Test
-	public void testCriaUmaOperacaoDeDivisao() {
 		comOperadorEFatores(DIVISAO, 100, 50, 2);
 	}
 	
@@ -62,17 +50,17 @@ public class OperacaoServiceTest {
 		/**
 		 * Dado a chamada de geradorService.geraFator(), deve me retornar 100 e 50
 		 */
-		given(geradorService.geraFator()).willReturn(fatorA, fatorB);
+		given(geradorService.gerarFator()).willReturn(fatorA, fatorB);
 		
 		/**
 		 * Dado a chamada de gerarOperador(), deve me retornar a operação soma (Operador.DIVISAO)
 		 */
-		given(geradorService.geraOperador()).willReturn(operador);
+		given(geradorService.gerarOperador()).willReturn(operador);
 		
 		/**
 		 * Quando eu chamar o método operacaoService.criaUmaOperacaoRadomica()
 		 */
-		Operacao operacao = operacaoService.criaUmaOperacaoRadomica();
+		Operacao operacao = operacaoService.criaUmaOperacaoAleatoria();
 		
 		/**
 		 * Então devo ter os seguintes resultados

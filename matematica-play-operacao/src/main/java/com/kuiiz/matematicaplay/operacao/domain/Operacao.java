@@ -1,7 +1,5 @@
 package com.kuiiz.matematicaplay.operacao.domain;
 
-import com.kuiiz.matematicaplay.operacao.domain.enums.Operador;
-
 public class Operacao {
 
 	private int fatorA;
@@ -78,9 +76,8 @@ public class Operacao {
 		this.operador = operador;
 	}
 
-
 	/**
-	 * Resultado
+	 * Efetuar Operacao
 	 * @param operador
 	 * @return
 	 */
@@ -98,7 +95,6 @@ public class Operacao {
 				resultado = fatorA / fatorB; break;
 		}
 	}
-	
 	
 	/**
 	 * ValidaDivisaoPorZero

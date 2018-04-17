@@ -1,20 +1,20 @@
 package com.kuiiz.matematicaplay.operacao.service;
 
-import com.kuiiz.matematicaplay.operacao.domain.enums.Operador;
+import com.kuiiz.matematicaplay.operacao.domain.Operador;
 
-public interface GeradorRandomicoService {
+public interface GeradorAleatorioService {
 
 	/**
 	 * Gera um fator entre 11 e 99 para o operação
 	 * @return
 	 */
-	int geraFator();
+	int gerarFator();
 	
 	
 	/**
 	 * Gera uma operação aleatória
 	 * @return
 	 */
-	Operador geraOperador();
+	Operador gerarOperador();
 	
 }
