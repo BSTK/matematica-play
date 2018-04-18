@@ -30,22 +30,24 @@ public class OperacaoServiceTest {
 	private OperacaoService operacaoService;
 	
 	@Test
-	public void testCriaUmaOperacaoEValidandoOResultado() {		
-		comOperadorEFatores(SOMA, 100, 50, 150);
-		comOperadorEFatores(SUBTRACAO, 100, 50, 50);
-		comOperadorEFatores(MULTIPLICACAO, 100, 50, 5000);
-		comOperadorEFatores(DIVISAO, 100, 50, 2);
+	public void testCriaUmaOperacaoValidandoOResultado() {		
+		
+		executaOperacao(100, SOMA, 50, 150);
+		executaOperacao(100, SUBTRACAO, 50, 50);
+		executaOperacao(100, MULTIPLICACAO, 50, 5000);
+		executaOperacao(100, DIVISAO, 50, 2);
+		
 	}
 	
 	
 	/**
-	 * ComOperadorEFatores
+	 * Executa Operacao
 	 * @param operador
 	 * @param fatorA
 	 * @param fatorB
 	 * @param resultado
 	 */
-	private void comOperadorEFatores(Operador operador, int fatorA, int fatorB, int resultado) {
+	private void executaOperacao(int fatorA, Operador operador, int fatorB, int resultado) {
 	
 		/**
 		 * Dado a chamada de geradorService.geraFator(), deve me retornar 100 e 50
@@ -71,5 +73,4 @@ public class OperacaoServiceTest {
 		assertThat(operacao.getResultado()).isEqualTo(resultado);
 	}
 	
-
 }

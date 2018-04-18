@@ -2,6 +2,7 @@ package com.kuiiz.matematicaplay.operacao.service;
 
 import com.kuiiz.matematicaplay.operacao.domain.Operacao;
 
+
 public interface OperacaoService {
 	
 	
