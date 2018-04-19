@@ -34,16 +34,14 @@ function executarOperacao() {
 		 var a = $('.fator-a').text();
 		 var b = $('.fator-b').text();
 		 var operador = $('.operador').text();
-		 var resultado   = $("#input-resultado").val();
+		 var resultado = $("#input-resultado").val();
 		 
 		 var data = { 
-				 		usuario:  { apelido: 'Um Nome' }, 
-		 				operacao: { fatorA: a, fatorB: b, operador: operador }, 
-		 				resultado: resultado
-		 			};
+			usuario:  { apelido: 'Um Nome' }, 
+		 	operacao: { fatorA: a, fatorB: b, operador: operador }, 
+		 	resultado: resultado
+		 };
 		 
-		 console.log('Enviando dados : ', JSON.stringify(data));
-	 
 		 $.ajax({
 			 url: '/resultados',
 			 type: 'POST',
@@ -77,7 +75,7 @@ function cronometro() {
 		contador++;
 		
 		if (contador > 5) {
-			executarOperacao();
+			atualizaOperacao();
 			$('.result-message').empty().append(menssagemOperacaoErrada);
 			contador = 1;
 		}	

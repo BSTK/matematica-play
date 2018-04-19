@@ -10,7 +10,7 @@ public enum Operador {
 
 	SOMA("+"),
 	SUBTRACAO("-"),
-	MULTIPLICACAO("*"),
+	MULTIPLICACAO("x"),
 	DIVISAO("/");
 	
 	@JsonValue
