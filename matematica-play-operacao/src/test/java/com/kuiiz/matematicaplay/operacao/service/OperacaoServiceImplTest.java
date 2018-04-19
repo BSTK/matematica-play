@@ -7,27 +7,29 @@ import static com.kuiiz.matematicaplay.operacao.domain.Operador.SUBTRACAO;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import com.kuiiz.matematicaplay.operacao.domain.Operacao;
 import com.kuiiz.matematicaplay.operacao.domain.Operador;
+import com.kuiiz.matematicaplay.operacao.domain.TentativaSolucao;
+import com.kuiiz.matematicaplay.operacao.domain.Usuario;
 
-
-@SpringBootTest
-@RunWith(SpringRunner.class)
-public class OperacaoServiceTest {
+public class OperacaoServiceImplTest {
 	
-	
-	@MockBean
+	@Mock
 	public GeradorAleatorioService geradorService;
 	
-	@Autowired
-	private OperacaoService operacaoService;
+	private OperacaoServiceImpl operacaoServiceImpl;
+	
+	@Before
+	public void setUp() {
+		MockitoAnnotations.initMocks(this);
+		operacaoServiceImpl = new OperacaoServiceImpl(geradorService);
+	}
+	
 	
 	@Test
 	public void testCriaUmaOperacaoValidandoOResultado() {		
@@ -36,6 +38,17 @@ public class OperacaoServiceTest {
 		executaOperacao(100, SUBTRACAO, 50, 50);
 		executaOperacao(100, MULTIPLICACAO, 50, 5000);
 		executaOperacao(100, DIVISAO, 50, 2);
+		
+	}
+	
+	@Test
+	public void testVerificaTentativaCorreta() {
+		assertThat(verificaTentativa(100, 100, 200, SOMA)).isTrue();
+	}
+	
+	@Test
+	public void testVerificaTentativaErrada() {
+		assertThat(verificaTentativa(100, 100, 2000, SOMA)).isFalse();
 		
 	}
 	
@@ -62,7 +75,7 @@ public class OperacaoServiceTest {
 		/**
 		 * Quando eu chamar o método operacaoService.criaUmaOperacaoRadomica()
 		 */
-		Operacao operacao = operacaoService.criaUmaOperacaoAleatoria();
+		Operacao operacao = operacaoServiceImpl.criaUmaOperacaoAleatoria();
 		
 		/**
 		 * Então devo ter os seguintes resultados
@@ -72,4 +85,22 @@ public class OperacaoServiceTest {
 		assertThat(operacao.getOperador()).isEqualTo(operador);
 	}
 	
+	/**
+	 * VerificaTentativa
+	 * @param fatorA
+	 * @param fatorB
+	 * @param resultado
+	 * @param operador
+	 * @return
+	 */
+	private boolean verificaTentativa(int fatorA, int fatorB, int resultado, Operador operador) {
+		
+		Operacao operacao = new Operacao(fatorA, fatorB, operador);
+		Usuario usuario = new Usuario("Sebastião");
+		TentativaSolucao solucao = new TentativaSolucao(usuario, operacao, resultado);
+		
+		return operacaoServiceImpl.verificaTentativa(solucao);
+	}
+
+
 }

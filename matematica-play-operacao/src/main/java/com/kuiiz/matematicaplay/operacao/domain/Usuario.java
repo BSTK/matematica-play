@@ -9,18 +9,16 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 @RequiredArgsConstructor
-public class Operacao {
+public class Usuario {
 
-	private final int fatorA;
-	private final int fatorB;
-	private final Operador operador;
+	private final String apelido;
 	
 	/**
-	 * Operacao
+	 * Usuario
 	 * Empty constructor for JSON (de) serialization
 	 */
-	public Operacao() {
-		this(0, 0, Operador.SOMA);
+	public Usuario() {
+		this("");
 	}
 	
 }

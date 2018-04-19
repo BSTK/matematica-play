@@ -1,6 +1,7 @@
 package com.kuiiz.matematicaplay.operacao.service;
 
 import com.kuiiz.matematicaplay.operacao.domain.Operacao;
+import com.kuiiz.matematicaplay.operacao.domain.TentativaSolucao;
 
 
 public interface OperacaoService {
@@ -11,5 +12,12 @@ public interface OperacaoService {
 	 * @return
 	 */
 	Operacao criaUmaOperacaoAleatoria();
+	
+	/**
+	 * Retorna true caso a tentativa de solução esteja correta
+	 * @param tentativaSolucao
+	 * @return
+	 */
+	boolean verificaTentativa(final TentativaSolucao solucao);
 
 }

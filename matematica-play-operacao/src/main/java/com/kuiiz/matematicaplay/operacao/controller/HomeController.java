@@ -1,4 +1,4 @@
-package com.kuiiz.matematicaplay.operacao.web;
+package com.kuiiz.matematicaplay.operacao.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
