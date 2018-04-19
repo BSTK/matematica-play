@@ -4,14 +4,16 @@ import java.util.stream.Stream;
 
 import org.springframework.util.Assert;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum Operador {
 
-	SOMA("soma", "+"),
-	SUBTRACAO("subtracao", "-"),
-	MULTIPLICACAO("multiplicacao", "*"),
-	DIVISAO("divisao", "/");
+	SOMA("+"),
+	SUBTRACAO("-"),
+	MULTIPLICACAO("*"),
+	DIVISAO("/");
 	
-	private final String descricao;
+	@JsonValue
 	private final String simbolo;
 	
 	/**
@@ -19,8 +21,7 @@ public enum Operador {
 	 * @param descricao
 	 * @param simbolo
 	 */
-	private Operador(String descricao, String simbolo) {
-		this.descricao = descricao;
+	private Operador(String simbolo) {
 		this.simbolo = simbolo;
 	}
 	
@@ -39,13 +40,6 @@ public enum Operador {
 					.get();
 	}
 
-	
-	/**
-	 * @return the descricao
-	 */
-	public String getDescricao() {
-		return descricao;
-	}
 
 	/**
 	 * @return the simbolo

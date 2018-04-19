@@ -8,7 +8,7 @@ import com.kuiiz.matematicaplay.operacao.domain.Operador;
 @Service
 public class GeradorAleatorioServiceImpl implements GeradorAleatorioService {
 	
-	private static final int FATOR_MINIMO = 11;
+	private static final int FATOR_MINIMO = 1;
 	private static final int FATOR_MAXIMO = 99;
 	private static final Random RANDOM = new Random();
 	private static final Operador[] OPERADORES = Operador.values();
