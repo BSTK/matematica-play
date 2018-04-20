@@ -14,7 +14,7 @@ public class OperadorTest {
 		
 		assertThat(Operador.toEnum("+")).isEqualTo(Operador.SOMA);
 		assertThat(Operador.toEnum("-")).isEqualTo(Operador.SUBTRACAO);
-		assertThat(Operador.toEnum("*")).isEqualTo(Operador.MULTIPLICACAO);
+		assertThat(Operador.toEnum("x")).isEqualTo(Operador.MULTIPLICACAO);
 		assertThat(Operador.toEnum("/")).isEqualTo(Operador.DIVISAO);
 		
 	}

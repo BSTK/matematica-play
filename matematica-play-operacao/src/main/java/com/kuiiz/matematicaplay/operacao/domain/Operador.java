@@ -31,8 +31,8 @@ public enum Operador {
 	 * 		Transforma um simbolo (+, -, *, /) em um enum de operador
 	 */
 	public static Operador toEnum(String simbolo) {
-		
-		Assert.isTrue("+-*/".contains(simbolo), "O simbolo " + simbolo + " é um operador inválido");
+				
+		Assert.isTrue("+-x/".contains(simbolo), "O simbolo " + simbolo + " é um operador inválido");
 		
 		return Stream.of(values())
 					.filter(o -> o.getSimbolo().equals(simbolo))
