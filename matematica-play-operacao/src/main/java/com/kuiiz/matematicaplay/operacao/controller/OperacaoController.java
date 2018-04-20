@@ -23,9 +23,5 @@ public class OperacaoController {
 	public Operacao operacao() {
 		return operacaoService.criaUmaOperacaoAleatoria();
 	}
-	
-	// POST /results/
-	
-	// GET /results?user=[user_alias]
 
 }
