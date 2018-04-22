@@ -40,7 +40,6 @@ public enum Operador {
 					.get();
 	}
 
-
 	/**
 	 * @return the simbolo
 	 */

@@ -177,3 +177,44 @@ body.mobile-nav-active #mobile-nav-toggle {
 #footer .footer-links a:hover {
   color: #1dc8cd;
 }
+
+.notify {  
+  position:absolute;
+  top:0px;
+  width:100%;
+  height:0;  
+  box-sizing:border-box;
+  color:#fff;
+  font-size: 15px;
+  font-weight: bold;
+  text-align:center;
+  overflow:hidden;
+  box-sizing:border-box;
+  transition:height .3s;
+}
+
+.notify-success {
+	background:#4CAF50;
+}
+
+.notify-failure {
+	background:#F44336;
+}
+
+#notifyType:before {
+  display:block;
+  margin-top:15px;
+  
+}
+
+.active {  
+  height:60px;
+}
+
+.success:before {
+  Content:"Aww Yeaaaaa!! Acertou (-:";
+}
+
+.failure:before {
+  Content:"Oops!!!! Tente novamente :(";
+}
