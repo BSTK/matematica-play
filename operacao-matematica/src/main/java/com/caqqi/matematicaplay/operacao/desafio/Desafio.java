@@ -13,6 +13,6 @@ public class Desafio {
 
     private int fatorA;
     private int fatorB;
-    private DesafioOperacao operacao;
+    private String operacao;
 
 }
