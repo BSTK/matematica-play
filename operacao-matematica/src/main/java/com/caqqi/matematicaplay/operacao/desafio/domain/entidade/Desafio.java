@@ -1,4 +1,4 @@
-package com.caqqi.matematicaplay.operacao.desafio;
+package com.caqqi.matematicaplay.operacao.desafio.domain.entidade;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
