@@ -3,8 +3,9 @@ package com.caqqi.matematicaplay.operacao.desafio.domain.service;
 import com.caqqi.matematicaplay.operacao.desafio.domain.entidade.Desafio;
 import com.caqqi.matematicaplay.operacao.desafio.domain.entidade.DesafioOperacao;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -26,13 +27,16 @@ public class DesafioGeradorServiceTest {
         desafioGeradorService = new DesafioGeradorServiceImpl(random);
     }
 
-    @Test
-    public void deveGerarUmDesafioAleatorioEntreLimitesEsperadosComOperacaoDeAdicao() {
+    @ParameterizedTest
+    @CsvSource({ "0,+", "1,/", "2,-", "3,*" })
+    public void deveGerarUmDesafioAleatorioEntreLimitesEsperadosComOperacaoDeAdicao(final Integer index,
+                                                                                    final String operacao) {
         given(random.nextInt(89)).willReturn(20, 30);
-        given(random.nextInt(DesafioOperacao.values().length)).willReturn(0);
+        given(random.nextInt(DesafioOperacao.values().length)).willReturn(index);
 
         Desafio desafio = desafioGeradorService.gerarDesafioRandomico();
 
-        then(desafio).isEqualTo(new Desafio(31, 41, "+"));
+        then(desafio).isEqualTo(new Desafio(31, 41, operacao));
     }
+
 }
