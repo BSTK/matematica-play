@@ -1,7 +1,7 @@
 package com.caqqi.matematicaplay.operacao.desafio.domain.service;
 
-import com.caqqi.matematicaplay.operacao.desafio.domain.entidade.Desafio;
 import com.caqqi.matematicaplay.operacao.desafio.domain.DesafioOperacao;
+import com.caqqi.matematicaplay.operacao.desafio.domain.entidade.Desafio;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
