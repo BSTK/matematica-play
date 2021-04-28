@@ -1,4 +1,4 @@
-package com.caqqi.matematicaplay.operacao.desafio.domain.entidade;
+package com.caqqi.matematicaplay.operacao.desafio.domain;
 
 import java.util.stream.Stream;
 
