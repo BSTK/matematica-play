@@ -18,7 +18,7 @@ public enum DesafioOperacao {
         this.descricao = descricao;
     }
 
-    public DesafioOperacao of(final String operador) {
+    public static DesafioOperacao of(final String operador) {
         return Stream
             .of(values())
             .filter(operacao -> operador.equals(operacao.getOperador()))

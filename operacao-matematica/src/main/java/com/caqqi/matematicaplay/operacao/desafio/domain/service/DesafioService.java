@@ -5,6 +5,6 @@ import com.caqqi.matematicaplay.operacao.desafio.domain.entidade.DesafioTentativ
 
 public interface DesafioService {
 
-    DesafioTentativaResposta verificarResposta(DesafioTentativaRespostaRequest tentativaRequest);
+    DesafioTentativaResposta verificarResposta(final DesafioTentativaRespostaRequest tentativaRequest);
 
 }

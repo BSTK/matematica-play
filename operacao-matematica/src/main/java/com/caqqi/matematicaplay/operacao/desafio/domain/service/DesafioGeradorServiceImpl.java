@@ -23,7 +23,7 @@ public class DesafioGeradorServiceImpl implements DesafioGeradorService {
     }
 
     @Override
-    public Desafio gerarDesafioRandomico() {
+    public Desafio gerarDesafioAleatorio() {
         return new Desafio(
             fator(),
             fator(),

@@ -11,8 +11,8 @@ public class DesafioServiceImpl implements DesafioService {
 
     @Override
     public DesafioTentativaResposta verificarResposta(final DesafioTentativaRespostaRequest tentativaRequest) {
-        final int resultadoTentaiva = executarOperacao(tentativaRequest);
-        final boolean respostaCorreta = tentativaRequest.getResposta() == resultadoTentaiva;
+        final int resultadoTentativa = executarOperacao(tentativaRequest);
+        final boolean respostaCorreta = tentativaRequest.getResposta() == resultadoTentativa;
         final Usuario usuario = new Usuario(null, tentativaRequest.getApelido());
 
         return new DesafioTentativaResposta(
@@ -20,7 +20,7 @@ public class DesafioServiceImpl implements DesafioService {
             usuario,
             tentativaRequest.getFatorA(),
             tentativaRequest.getFatorB(),
-            resultadoTentaiva,
+            resultadoTentativa,
             respostaCorreta,
             tentativaRequest.getOperacao());
     }
