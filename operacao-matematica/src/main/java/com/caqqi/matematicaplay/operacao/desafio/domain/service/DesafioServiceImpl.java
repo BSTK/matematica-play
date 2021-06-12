@@ -11,7 +11,10 @@ public class DesafioServiceImpl implements DesafioService {
 
     @Override
     public DesafioTentativaResposta verificarResposta(final DesafioTentativaRespostaRequest tentativaRequest) {
-        final int resultadoTentativa = executarOperacao(tentativaRequest);
+        final int resultadoTentativa = DesafioOperacao
+                                            .of(tentativaRequest.getOperacao())
+                                            .execute(tentativaRequest.getFatorA(), tentativaRequest.getFatorB());
+
         final boolean respostaCorreta = tentativaRequest.getResposta() == resultadoTentativa;
         final Usuario usuario = new Usuario(null, tentativaRequest.getApelido());
 
@@ -23,26 +26,6 @@ public class DesafioServiceImpl implements DesafioService {
             resultadoTentativa,
             respostaCorreta,
             tentativaRequest.getOperacao());
-    }
-
-    private int executarOperacao(final DesafioTentativaRespostaRequest tentativaRequest) {
-        if (DesafioOperacao.ADICAO.getOperador().equals(tentativaRequest.getOperacao())) {
-            return tentativaRequest.getFatorA() + tentativaRequest.getFatorB();
-        }
-
-        if (DesafioOperacao.DIVISAO.getOperador().equals(tentativaRequest.getOperacao())) {
-            return tentativaRequest.getFatorA() / tentativaRequest.getFatorB();
-        }
-
-        if (DesafioOperacao.SUBTRACAO.getOperador().equals(tentativaRequest.getOperacao())) {
-            return tentativaRequest.getFatorA() - tentativaRequest.getFatorB();
-        }
-
-        if (DesafioOperacao.MULTIPLICACAO.getOperador().equals(tentativaRequest.getOperacao())) {
-            return tentativaRequest.getFatorA() * tentativaRequest.getFatorB();
-        }
-
-        throw new IllegalArgumentException("Operação inválida!");
     }
 
 }

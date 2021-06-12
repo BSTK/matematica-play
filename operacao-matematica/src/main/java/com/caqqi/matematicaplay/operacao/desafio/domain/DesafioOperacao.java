@@ -4,18 +4,21 @@ import java.util.stream.Stream;
 
 public enum DesafioOperacao {
 
-    ADICAO("+", "Adição"),
-    DIVISAO("/", "Divisão"),
-    SUBTRACAO("-", "Subtração"),
-    MULTIPLICACAO("*", "Multiplicação");
+    ADICAO("+", "Adição", (fatorA, fatorB) -> fatorA + fatorB),
+    DIVISAO("/", "Divisão", (fatorA, fatorB) -> fatorA / fatorB),
+    SUBTRACAO("-", "Subtração", (fatorA, fatorB) -> fatorA - fatorB),
+    MULTIPLICACAO("*", "Multiplicação", (fatorA, fatorB) -> fatorA * fatorB);
 
     private final String operador;
     private final String descricao;
+    private final ExecutaOperacao executar;
 
     DesafioOperacao(final String operador,
-                    final String descricao) {
+                    final String descricao,
+                    final ExecutaOperacao executar) {
         this.operador = operador;
         this.descricao = descricao;
+        this.executar = executar;
     }
 
     public static DesafioOperacao of(final String operador) {
@@ -26,6 +29,10 @@ public enum DesafioOperacao {
             .orElseThrow(() -> new IllegalArgumentException(String.format("Operador inválido ( %s ).", operador)));
     }
 
+    public int execute(final int fatorA, final int fatorB) {
+        return executar.execute(fatorA, fatorB);
+    }
+
     public String getOperador() {
         return operador;
     }
@@ -33,4 +40,9 @@ public enum DesafioOperacao {
     public String getDescricao() {
         return descricao;
     }
+
+    public static interface ExecutaOperacao {
+        int execute(final int fatorA, final int fatorB);
+    }
 }
+
