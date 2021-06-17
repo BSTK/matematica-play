@@ -1,5 +1,7 @@
 package com.caqqi.matematicaplay.operacao.desafio.api;
 
+import com.caqqi.matematicaplay.operacao.core.Mapper;
+import com.caqqi.matematicaplay.operacao.desafio.api.response.DesafioResponse;
 import com.caqqi.matematicaplay.operacao.desafio.domain.entidade.Desafio;
 import com.caqqi.matematicaplay.operacao.desafio.domain.service.DesafioGeradorService;
 import lombok.RequiredArgsConstructor;
@@ -18,11 +20,12 @@ public class DesafioController {
     private final DesafioGeradorService desafioGeradorService;
 
     @GetMapping("/aleatorio")
-    public ResponseEntity<Desafio> desafioAleatorio() {
+    public ResponseEntity<DesafioResponse> desafioAleatorio() {
         final Desafio desafio = desafioGeradorService.gerarDesafioAleatorio();
+        final DesafioResponse desafioResponse = Mapper.to(desafio, DesafioResponse.class);
         log.info("Gerando desafio aleatório: {}", desafio);
 
-        return ResponseEntity.ok(desafio);
+        return ResponseEntity.ok(desafioResponse);
     }
 
 }

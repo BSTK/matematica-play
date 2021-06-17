@@ -29,6 +29,13 @@ public enum DesafioOperacao {
             .orElseThrow(() -> new IllegalArgumentException(String.format("Operador inválido ( %s ).", operador)));
     }
 
+    public static String[] operadores() {
+        return (String[]) Stream
+            .of(DesafioOperacao.values())
+            .map(DesafioOperacao::getOperador)
+            .toArray();
+    }
+
     public int execute(final int fatorA, final int fatorB) {
         return executar.execute(fatorA, fatorB);
     }
