@@ -1,19 +1,26 @@
-import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
-import {AppRoutingModule} from './app-routing.module';
-import {BrowserModule} from '@angular/platform-browser';
 import {CoreModule} from './core/core.module';
+import ptBr from '@angular/common/locales/pt';
+import {LOCALE_ID, NgModule} from '@angular/core';
+import {registerLocaleData} from '@angular/common';
+import {BrowserModule} from '@angular/platform-browser';
+import {APP_ROUTING_PROVIDER, ROUTING} from './app.routing';
+
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    CoreModule
+    ROUTING,
+    CoreModule,
+    BrowserModule
   ],
-  providers: [],
+  providers: [
+    APP_ROUTING_PROVIDER,
+    {provide: LOCALE_ID, useValue: 'pt'},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
