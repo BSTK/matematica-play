@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -22,7 +24,7 @@ public class DesafioTentativaController {
     private final DesafioService desafioService;
 
     @PostMapping
-    public ResponseEntity<DesafioTentativaRespostaResponse> verificarResposta(@RequestBody final DesafioTentativaRespostaRequest request) {
+    public ResponseEntity<DesafioTentativaRespostaResponse> verificarResposta(@RequestBody @Valid final DesafioTentativaRespostaRequest request) {
         DesafioTentativaResposta tentativaResposta = desafioService.verificarResposta(request);
         DesafioTentativaRespostaResponse tentativaRespostaResponse = Mapper.to(tentativaResposta, DesafioTentativaRespostaResponse.class);
         return ResponseEntity.ok(tentativaRespostaResponse);

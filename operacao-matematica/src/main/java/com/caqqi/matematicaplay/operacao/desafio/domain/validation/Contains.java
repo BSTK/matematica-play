@@ -11,12 +11,12 @@ import java.lang.annotation.*;
 public @interface Contains {
 
     String message() default
-        "O valor deve ser um item pré estabelecido";
+        "O valor deve ser está contido no range informado";
 
     String[] range() default {};
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
-}
 
+}
