@@ -1,10 +1,10 @@
 package com.caqqi.matematicaplay.operacao.desafio.domain.validation;
 
-import org.springframework.util.StringUtils;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import java.util.Objects;
+
+import static java.util.Objects.isNull;
+import static org.springframework.util.StringUtils.hasLength;
 
 public class ContainsValidator implements ConstraintValidator<Contains, String> {
 
@@ -18,11 +18,11 @@ public class ContainsValidator implements ConstraintValidator<Contains, String> 
     @Override
     public boolean isValid(final String valor,
                            final ConstraintValidatorContext context) {
-        if (!StringUtils.hasLength(valor)) {
+        if (!hasLength(valor)) {
             return false;
         }
 
-        if (Objects.isNull(range) || range.length == 0) {
+        if (isNull(range) || range.length == 0) {
             return false;
         }
 
