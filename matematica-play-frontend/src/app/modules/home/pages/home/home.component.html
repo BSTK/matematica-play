@@ -1,40 +1,23 @@
 <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-  <h1 class="display-1 fw-normal">30 + 50</h1>
-  <h4 class="display-6">Errou !!</h4>
+  <h1 class="display-1 fw-normal">
+    {{ jogada.fatorA }}
+    {{ jogada.operacao }}
+    {{ jogada.fatorB }}
+  </h1>
+  <h4 class="display-6" [ngClass]="classAcertoErro">
+    {{ menssagemAcertoErro }}
+  </h4>
 </div>
 
 <div class="row text-center">
-  <div class="col-6 mb-3">
-    <div class="card mb-6 p-3 rounded-3 shadow-sm">
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">15</h1>
-      </div>
-    </div>
-  </div>
 
-  <div class="col-6">
-    <div class="card mb-6 p-3 rounded-3 shadow-sm">
+  <div class="col-6 mb-3" *ngFor="let numero of numerosJogada">
+    <div class="card mb-6 p-3 rounded-3 shadow-sm botao"
+         (click)="jogar(numero)">
       <div class="card-body">
-        <h1 class="card-title pricing-card-title">15</h1>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-6">
-    <div class="card mb-6 p-3 rounded-3 shadow-sm">
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">15</h1>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-6">
-    <div class="card mb-6 p-3 rounded-3 shadow-sm">
-      <div class="card-body">
-        <h1 class="card-title pricing-card-title">15</h1>
+        <h1 class="card-title pricing-card-title">{{ numero }}</h1>
       </div>
     </div>
   </div>
 
 </div>
-
