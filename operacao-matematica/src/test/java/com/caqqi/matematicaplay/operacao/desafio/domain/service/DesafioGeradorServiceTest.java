@@ -2,6 +2,7 @@ package com.caqqi.matematicaplay.operacao.desafio.domain.service;
 
 import com.caqqi.matematicaplay.operacao.desafio.domain.DesafioOperacao;
 import com.caqqi.matematicaplay.operacao.desafio.domain.entidade.Desafio;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,7 +13,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Random;
 
-import static org.assertj.core.api.BDDAssertions.then;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
@@ -38,7 +38,15 @@ public class DesafioGeradorServiceTest {
 
         Desafio desafio = desafioGeradorService.gerarDesafioAleatorio();
 
-        then(desafio).isEqualTo(new Desafio(31, 41, operacao));
+        Assertions.assertThat(desafio.getFatorA()).isEqualTo(31);
+        Assertions.assertThat(desafio.getFatorB()).isEqualTo(41);
+        Assertions.assertThat(desafio.getOperacao()).isEqualTo(operacao);
+        Assertions.assertThat(desafio.getAlternativas()).hasSize(4);
+
+        final int resultadoCorreto = DesafioOperacao.of(operacao)
+            .execute(desafio.getFatorA(), desafio.getFatorB());
+
+        Assertions.assertThat(desafio.getAlternativas()).contains(resultadoCorreto);
     }
 
 }
