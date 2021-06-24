@@ -30,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest(DesafioTentativaController.class)
 public class DesafioTentativaControllerTest {
 
-    private static final String ENDPOINT_V1_TENTATIVAS = "/v1/tentativas";
+    private static final String ENDPOINT_API_V1_TENTATIVAS = "/api/v1/tentativas";
 
     @MockBean
     private DesafioService desafioService;
@@ -60,7 +60,7 @@ public class DesafioTentativaControllerTest {
             .willReturn(respostaEsperada);
 
         this.mockMvc.perform(
-            post(ENDPOINT_V1_TENTATIVAS)
+            post(ENDPOINT_API_V1_TENTATIVAS)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonTentativaRespostaRequest.write(request).getJson()))
             .andExpect(status().isOk())
@@ -80,7 +80,7 @@ public class DesafioTentativaControllerTest {
             50, 50, 100, "#", "Jhon");
 
         this.mockMvc.perform(
-            post(ENDPOINT_V1_TENTATIVAS)
+            post(ENDPOINT_API_V1_TENTATIVAS)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonTentativaRespostaRequest.write(request).getJson()))
             .andExpect(status().isBadRequest());
@@ -93,7 +93,7 @@ public class DesafioTentativaControllerTest {
             -1, 50, 100, SUBTRACAO.getOperador(), "Jhon");
 
         this.mockMvc.perform(
-            post(ENDPOINT_V1_TENTATIVAS)
+            post(ENDPOINT_API_V1_TENTATIVAS)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonTentativaRespostaRequest.write(request).getJson()))
             .andExpect(status().isBadRequest());
@@ -106,7 +106,7 @@ public class DesafioTentativaControllerTest {
             999, 50, 100, SUBTRACAO.getOperador(), "Jhon");
 
         this.mockMvc.perform(
-            post(ENDPOINT_V1_TENTATIVAS)
+            post(ENDPOINT_API_V1_TENTATIVAS)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonTentativaRespostaRequest.write(request).getJson()))
             .andExpect(status().isBadRequest());
@@ -119,7 +119,7 @@ public class DesafioTentativaControllerTest {
             10, -1, 100, SUBTRACAO.getOperador(), "Jhon");
 
         this.mockMvc.perform(
-            post(ENDPOINT_V1_TENTATIVAS)
+            post(ENDPOINT_API_V1_TENTATIVAS)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonTentativaRespostaRequest.write(request).getJson()))
             .andExpect(status().isBadRequest());
@@ -132,7 +132,7 @@ public class DesafioTentativaControllerTest {
             10, 999, 100, SUBTRACAO.getOperador(), "Jhon");
 
         this.mockMvc.perform(
-            post(ENDPOINT_V1_TENTATIVAS)
+            post(ENDPOINT_API_V1_TENTATIVAS)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonTentativaRespostaRequest.write(request).getJson()))
             .andExpect(status().isBadRequest());
@@ -145,7 +145,7 @@ public class DesafioTentativaControllerTest {
             10, 999, -1, SUBTRACAO.getOperador(), "Jhon");
 
         this.mockMvc.perform(
-            post(ENDPOINT_V1_TENTATIVAS)
+            post(ENDPOINT_API_V1_TENTATIVAS)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonTentativaRespostaRequest.write(request).getJson()))
             .andExpect(status().isBadRequest());
@@ -158,7 +158,7 @@ public class DesafioTentativaControllerTest {
             10, 10, -1, SUBTRACAO.getOperador(), null);
 
         this.mockMvc.perform(
-            post(ENDPOINT_V1_TENTATIVAS)
+            post(ENDPOINT_API_V1_TENTATIVAS)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonTentativaRespostaRequest.write(request).getJson()))
             .andExpect(status().isBadRequest());
@@ -171,7 +171,7 @@ public class DesafioTentativaControllerTest {
             10, 10, 0, SUBTRACAO.getOperador(), "");
 
         this.mockMvc.perform(
-            post(ENDPOINT_V1_TENTATIVAS)
+            post(ENDPOINT_API_V1_TENTATIVAS)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonTentativaRespostaRequest.write(request).getJson()))
             .andExpect(status().isBadRequest());
@@ -184,7 +184,7 @@ public class DesafioTentativaControllerTest {
             10, 10, 0, SUBTRACAO.getOperador(), "  ");
 
         this.mockMvc.perform(
-            post(ENDPOINT_V1_TENTATIVAS)
+            post(ENDPOINT_API_V1_TENTATIVAS)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(jsonTentativaRespostaRequest.write(request).getJson()))
             .andExpect(status().isBadRequest());

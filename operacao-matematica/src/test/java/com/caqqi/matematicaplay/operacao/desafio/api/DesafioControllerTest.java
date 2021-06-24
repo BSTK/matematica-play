@@ -2,6 +2,7 @@ package com.caqqi.matematicaplay.operacao.desafio.api;
 
 import com.caqqi.matematicaplay.operacao.desafio.domain.entidade.Desafio;
 import com.caqqi.matematicaplay.operacao.desafio.domain.service.DesafioGeradorService;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -29,6 +29,7 @@ public class DesafioControllerTest {
     private MockMvc mockMvc;
 
     @Test
+    @DisplayName("Deve retornar um resafio aleatorio")
     public void deveRetornarUmResafioAleatorio() throws Exception {
         final Desafio desafio = new Desafio(10, 10, new int[] {1, 2, 3, 20}, "+");
         when(desafioGeradorService.gerarDesafioAleatorio()).thenReturn(desafio);

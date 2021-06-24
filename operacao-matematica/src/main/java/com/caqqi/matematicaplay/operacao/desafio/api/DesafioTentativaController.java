@@ -18,7 +18,7 @@ import javax.validation.Valid;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v1/tentativas")
+@RequestMapping("/api/v1/tentativas")
 public class DesafioTentativaController {
 
     private final DesafioService desafioService;
