@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Jogada} from '../../service/jogada.model';
 import {HomeService} from '../../service/home.service';
+import {Desafio, DesafioTentativa, DesafioTentativaResposta} from '../../service/desafio.model';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +9,7 @@ import {HomeService} from '../../service/home.service';
 })
 export class HomeComponent implements OnInit {
   
-  public jogada = new Jogada();
-  public numerosJogada: number[] = [];
+  public desafio: Desafio = new Desafio();
   
   public classAcertoErro: string = '';
   public menssagemAcertoErro: string = '';
@@ -18,26 +17,34 @@ export class HomeComponent implements OnInit {
   constructor(private readonly homeService: HomeService) { }
 
   ngOnInit(): void {
-    this.tentativaResposta();
+    this.homeService
+      .desafioAleatorio()
+      .subscribe((desafio: Desafio) => {
+        if (desafio) {
+          this.desafio = desafio;
+        }
+      });
   }
   
-  /// TODO: MOCK RESPOSTA CORRETA
-  async jogar(resposta: number) {
-    if (resposta < 30) {
-      this.acertouResposta();
-    } else {
-      this.errouResposta();
-    }
+  jogar(resposta: number) {
+    const tentativa = new DesafioTentativa();
+    tentativa.resposta = resposta;
+    tentativa.apelido = 'Bruno Luz';
+    tentativa.fatorA = this.desafio.fatorA;
+    tentativa.fatorB = this.desafio.fatorB;
+    tentativa.operacao = this.desafio.operacao;
     
-    await new Promise(f => setTimeout(f, 1000));
-    
-    this.tentativaResposta();
-    this.resetar();
-  }
-  
-  private tentativaResposta() {
-    this.jogada = this.homeService.gerarJogadaAleatoria();
-    this.numerosJogada = this.homeService.gerarNumeroAleatorios();
+    this.homeService
+      .verificarResposta(tentativa)
+      .subscribe((resposta: DesafioTentativaResposta) => {
+        if (resposta && resposta.correta) {
+          this.acertouResposta();
+        } else {
+          this.errouResposta();
+        }
+        
+        this.resetar();
+      });
   }
   
   private acertouResposta() {
