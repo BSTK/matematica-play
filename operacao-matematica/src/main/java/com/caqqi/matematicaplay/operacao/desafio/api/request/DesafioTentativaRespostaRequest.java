@@ -5,7 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
@@ -20,7 +23,7 @@ public class DesafioTentativaRespostaRequest {
     @Max(99)
     int fatorB;
 
-    @PositiveOrZero
+    @NotNull
     int resposta;
 
     @Contains(range = { "+", "-", "*", "/" })
