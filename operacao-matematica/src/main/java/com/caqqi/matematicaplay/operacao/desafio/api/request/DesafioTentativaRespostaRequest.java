@@ -1,11 +1,15 @@
 package com.caqqi.matematicaplay.operacao.desafio.api.request;
 
 import com.caqqi.matematicaplay.operacao.desafio.domain.validation.Contains;
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.*;
 
-@Value
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class DesafioTentativaRespostaRequest {
 
     @Min(1)
