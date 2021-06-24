@@ -17,13 +17,7 @@ export class HomeComponent implements OnInit {
   constructor(private readonly homeService: HomeService) { }
 
   ngOnInit(): void {
-    this.homeService
-      .desafioAleatorio()
-      .subscribe((desafio: Desafio) => {
-        if (desafio) {
-          this.desafio = desafio;
-        }
-      });
+    this.novoDesafio();
   }
   
   jogar(resposta: number) {
@@ -38,12 +32,20 @@ export class HomeComponent implements OnInit {
       .verificarResposta(tentativa)
       .subscribe((resposta: DesafioTentativaResposta) => {
         if (resposta && resposta.correta) {
+          console.log('acertouResposta ...');
+          this.classAcertoErro = 'acertou';
+          this.menssagemAcertoErro = 'Acertou !!';
           this.acertouResposta();
+          
         } else {
+          console.log('errouResposta ...');
           this.errouResposta();
         }
         
-        this.resetar();
+        setTimeout(() => {
+          this.resetar();
+          this.novoDesafio();
+        }, 1000);
       });
   }
   
@@ -55,6 +57,16 @@ export class HomeComponent implements OnInit {
   private errouResposta() {
     this.classAcertoErro = 'errou';
     this.menssagemAcertoErro = 'Errou !!';
+  }
+  
+  private novoDesafio() {
+    this.homeService
+      .desafioAleatorio()
+      .subscribe((desafio: Desafio) => {
+        if (desafio) {
+          this.desafio = desafio;
+        }
+      });
   }
   
   private resetar() {
