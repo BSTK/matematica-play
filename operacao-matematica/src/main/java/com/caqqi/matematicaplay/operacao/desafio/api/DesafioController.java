@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/desafios")
+@RequestMapping("/api/v1/desafios")
 public class DesafioController {
 
     private final DesafioGeradorService desafioGeradorService;

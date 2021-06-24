@@ -1,8 +1,8 @@
 package com.caqqi.matematicaplay.operacao.desafio.api.response;
 
-import lombok.Value;
+import lombok.Data;
 
-@Value
+@Data
 public class DesafioResponse {
 
     int fatorA;
