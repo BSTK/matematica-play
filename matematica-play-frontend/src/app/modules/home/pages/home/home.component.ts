@@ -9,6 +9,8 @@ import {Desafio, DesafioTentativa, DesafioTentativaResposta} from '../../service
 })
 export class HomeComponent implements OnInit {
   
+  /// TODO: USAR API DE AVATAR: https://avatars.dicebear.com/api/human/avatar-a.svg
+  
   public desafio: Desafio = new Desafio();
   
   public classAcertoErro: string = '';
