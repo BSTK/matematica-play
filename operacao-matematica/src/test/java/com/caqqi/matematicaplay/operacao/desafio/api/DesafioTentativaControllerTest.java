@@ -2,9 +2,9 @@ package com.caqqi.matematicaplay.operacao.desafio.api;
 
 import com.caqqi.matematicaplay.operacao.core.Mapper;
 import com.caqqi.matematicaplay.operacao.desafio.api.request.DesafioTentativaRespostaRequest;
+import com.caqqi.matematicaplay.operacao.desafio.domain.service.DesafioService;
 import com.caqqi.matematicaplay.operacao.desafio.api.response.DesafioTentativaRespostaResponse;
 import com.caqqi.matematicaplay.operacao.desafio.domain.entidade.DesafioTentativaResposta;
-import com.caqqi.matematicaplay.operacao.desafio.domain.service.DesafioService;
 import com.caqqi.matematicaplay.operacao.usuario.Usuario;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
