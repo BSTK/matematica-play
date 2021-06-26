@@ -34,13 +34,8 @@ export class HomeComponent implements OnInit {
       .verificarResposta(tentativa)
       .subscribe((resposta: DesafioTentativaResposta) => {
         if (resposta && resposta.correta) {
-          console.log('acertouResposta ...');
-          this.classAcertoErro = 'acertou';
-          this.menssagemAcertoErro = 'Acertou !!';
           this.acertouResposta();
-          
         } else {
-          console.log('errouResposta ...');
           this.errouResposta();
         }
         
@@ -48,6 +43,16 @@ export class HomeComponent implements OnInit {
           this.resetar();
           this.novoDesafio();
         }, 1000);
+      });
+  }
+  
+  private novoDesafio() {
+    this.homeService
+      .desafioAleatorio()
+      .subscribe((desafio: Desafio) => {
+        if (desafio) {
+          this.desafio = desafio;
+        }
       });
   }
   
@@ -59,16 +64,6 @@ export class HomeComponent implements OnInit {
   private errouResposta() {
     this.classAcertoErro = 'errou';
     this.menssagemAcertoErro = 'Errou !!';
-  }
-  
-  private novoDesafio() {
-    this.homeService
-      .desafioAleatorio()
-      .subscribe((desafio: Desafio) => {
-        if (desafio) {
-          this.desafio = desafio;
-        }
-      });
   }
   
   private resetar() {
