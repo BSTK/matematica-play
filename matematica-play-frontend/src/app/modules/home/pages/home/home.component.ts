@@ -24,11 +24,11 @@ export class HomeComponent implements OnInit {
   
   jogar(resposta: number) {
     const tentativa = new DesafioTentativa();
-    tentativa.resposta = resposta;
     tentativa.apelido = 'Bruno Luz';
     tentativa.fatorA = this.desafio.fatorA;
     tentativa.fatorB = this.desafio.fatorB;
     tentativa.operacao = this.desafio.operacao;
+    tentativa.resposta = resposta;
     
     this.homeService
       .verificarResposta(tentativa)
