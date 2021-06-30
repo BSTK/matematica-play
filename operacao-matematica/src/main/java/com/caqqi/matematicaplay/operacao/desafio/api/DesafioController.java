@@ -2,7 +2,7 @@ package com.caqqi.matematicaplay.operacao.desafio.api;
 
 import com.caqqi.matematicaplay.operacao.core.Mapper;
 import com.caqqi.matematicaplay.operacao.desafio.api.response.DesafioResponse;
-import com.caqqi.matematicaplay.operacao.desafio.domain.entidade.Desafio;
+import com.caqqi.matematicaplay.operacao.desafio.domain.entity.Desafio;
 import com.caqqi.matematicaplay.operacao.desafio.domain.service.DesafioGeradorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,7 +1,7 @@
 package com.caqqi.matematicaplay.operacao.desafio.domain.service;
 
 import com.caqqi.matematicaplay.operacao.desafio.api.request.DesafioTentativaRespostaRequest;
-import com.caqqi.matematicaplay.operacao.desafio.domain.entidade.DesafioTentativaResposta;
+import com.caqqi.matematicaplay.operacao.desafio.domain.entity.DesafioTentativaResposta;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

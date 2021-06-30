@@ -1,7 +1,7 @@
 package com.caqqi.matematicaplay.operacao.desafio.domain.service;
 
 import com.caqqi.matematicaplay.operacao.desafio.domain.DesafioOperacao;
-import com.caqqi.matematicaplay.operacao.desafio.domain.entidade.Desafio;
+import com.caqqi.matematicaplay.operacao.desafio.domain.entity.Desafio;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
