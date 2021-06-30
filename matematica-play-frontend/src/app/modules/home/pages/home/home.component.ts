@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   /// TODO: USAR API DE AVATAR: https://avatars.dicebear.com/api/human/avatar-a.svg
   
   public desafio: Desafio = new Desafio();
+  public desafioTentativas: DesafioTentativaResposta[] = [];
   
   public classAcertoErro: string = '';
   public menssagemAcertoErro: string = '';
@@ -52,6 +53,14 @@ export class HomeComponent implements OnInit {
       .subscribe((desafio: Desafio) => {
         if (desafio) {
           this.desafio = desafio;
+        }
+      });
+    
+    this.homeService
+      .tentativasPorUsuario('Bruno Luz')
+      .subscribe((tentativas: DesafioTentativaResposta[]) => {
+        if (tentativas) {
+          this.desafioTentativas = tentativas;
         }
       });
   }

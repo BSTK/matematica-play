@@ -14,7 +14,8 @@ export class Api {
     },
     
     tentativas: {
-      verificarResposta: Api.url('/tentativas')
+      verificarResposta: Api.url('/tentativas'),
+      tentativasPorUsuario: Api.url('/tentativas'),
     }
   });
   

@@ -21,3 +21,27 @@
   </div>
 
 </div>
+
+<div class="row text-center">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Desafio</th>
+      <th scope="col">Tentativa</th>
+      <th scope="col">Resposta</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let tentativa of desafioTentativas"
+        [ngClass]="tentativa.correta ? 'acertou' : 'errou'">
+      <th>
+        {{ tentativa.fatorA }}
+        {{ tentativa.operacao }}
+        {{ tentativa.fatorB }}
+      </th>
+      <td>{{ tentativa.resultado }}</td>
+      <td>{{ tentativa.correta ? 'Acertou (-:' : 'Errou /-:' }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
