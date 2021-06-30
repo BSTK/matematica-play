@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -17,6 +19,11 @@ public class DesafioServiceImpl implements DesafioService {
 
     private final UsuarioRepository usuarioRepository;
     private final DesafioTentativaRespostaRepository desafioTentativaRespostaRepository;
+
+    @Override
+    public List<DesafioTentativaResposta> ultimasTentivas(final String usuarioApelido) {
+        return desafioTentativaRespostaRepository.findTop10ByUsuarioApelidoOrderByIdDesc(usuarioApelido);
+    }
 
     @Override
     public DesafioTentativaResposta verificarResposta(final DesafioTentativaRespostaRequest tentativaRequest) {
