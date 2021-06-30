@@ -5,6 +5,7 @@ import com.caqqi.matematicaplay.operacao.desafio.domain.entity.DesafioTentativaR
 import com.caqqi.matematicaplay.operacao.desafio.domain.repository.DesafioTentativaRespostaRepository;
 import com.caqqi.matematicaplay.operacao.usuario.domain.entity.Usuario;
 import com.caqqi.matematicaplay.operacao.usuario.domain.repository.UsuarioRepository;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,11 +13,14 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
@@ -38,14 +42,27 @@ public class DesafioServiceTest {
             usuarioRepository,
             desafioTentativaRespostaRepository
         );
+    }
 
-        given(desafioTentativaRespostaRepository.save(any()))
-            .will(returnsFirstArg());
+    @Test
+    @DisplayName("Deve retornar as ultimas tentativas por usuario")
+    public void deveRetornarAsUltimasTentativasPorUsuario() {
+        given(desafioTentativaRespostaRepository.findTop10ByUsuarioApelidoOrderByIdDesc(anyString()))
+            .willReturn(Collections.emptyList());
+
+        List<DesafioTentativaResposta> tentativaRespostas = desafioService.ultimasTentivas("USUARIO_AA");
+
+        Assertions.assertThat(tentativaRespostas).isNotNull();
+        Assertions.assertThat(tentativaRespostas).isEmpty();
+
+        verify(desafioTentativaRespostaRepository).findTop10ByUsuarioApelidoOrderByIdDesc(anyString());
     }
 
     @Test
     @DisplayName("Verifica usuário já existente")
     public void verificaUsuarioJaExistente() {
+        given(desafioTentativaRespostaRepository.save(any())).will(returnsFirstArg());
+
         Usuario usuario = new Usuario("USUARIO_AA");
 
         given(usuarioRepository.buscarPorApelido("USUARIO_AA"))
@@ -136,6 +153,8 @@ public class DesafioServiceTest {
     }
 
     private void executaValidacaoCorreta(final DesafioTentativaRespostaRequest request) {
+        given(desafioTentativaRespostaRepository.save(any())).will(returnsFirstArg());
+
         DesafioTentativaResposta desafioTentativaResposta = desafioService.verificarResposta(request);
         then(desafioTentativaResposta.isCorreta()).isTrue();
 
@@ -144,6 +163,8 @@ public class DesafioServiceTest {
     }
 
     private void executaValidacaoErrada(final DesafioTentativaRespostaRequest request) {
+        given(desafioTentativaRespostaRepository.save(any())).will(returnsFirstArg());
+
         DesafioTentativaResposta desafioTentativaResposta = desafioService.verificarResposta(request);
         then(desafioTentativaResposta.isCorreta()).isFalse();
 
