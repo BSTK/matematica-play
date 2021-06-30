@@ -5,7 +5,7 @@ import com.caqqi.matematicaplay.operacao.desafio.api.request.DesafioTentativaRes
 import com.caqqi.matematicaplay.operacao.desafio.domain.service.DesafioService;
 import com.caqqi.matematicaplay.operacao.desafio.api.response.DesafioTentativaRespostaResponse;
 import com.caqqi.matematicaplay.operacao.desafio.domain.entity.DesafioTentativaResposta;
-import com.caqqi.matematicaplay.operacao.usuario.Usuario;
+import com.caqqi.matematicaplay.operacao.usuario.domain.entity.Usuario;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

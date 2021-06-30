@@ -1,6 +1,6 @@
 package com.caqqi.matematicaplay.operacao.desafio.api.response;
 
-import com.caqqi.matematicaplay.operacao.usuario.Usuario;
+import com.caqqi.matematicaplay.operacao.usuario.domain.entity.Usuario;
 import lombok.Data;
 
 @Data

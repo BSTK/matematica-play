@@ -1,6 +1,6 @@
 package com.caqqi.matematicaplay.operacao.desafio.domain.entity;
 
-import com.caqqi.matematicaplay.operacao.usuario.Usuario;
+import com.caqqi.matematicaplay.operacao.usuario.domain.entity.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

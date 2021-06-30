@@ -1,4 +1,4 @@
-package com.caqqi.matematicaplay.operacao.usuario;
+package com.caqqi.matematicaplay.operacao.usuario.domain.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
