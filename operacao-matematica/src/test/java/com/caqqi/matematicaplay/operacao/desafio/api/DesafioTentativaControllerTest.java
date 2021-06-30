@@ -65,7 +65,6 @@ public class DesafioTentativaControllerTest {
                 .content(jsonTentativaRespostaRequest.write(request).getJson()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("$.id").value(respostaEsperadaResponse.getId()))
             .andExpect(jsonPath("$.fatorA").value(respostaEsperadaResponse.getFatorA()))
             .andExpect(jsonPath("$.fatorB").value(respostaEsperadaResponse.getFatorB()))
             .andExpect(jsonPath("$.resultado").value(respostaEsperadaResponse.getResultado()))

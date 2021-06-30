@@ -21,7 +21,7 @@ public class DesafioTentativaController {
 
     private final DesafioService desafioService;
 
-    @GetMapping("?apelido")
+    @GetMapping
     public ResponseEntity<List<DesafioTentativaRespostaResponse>> tentativasPorUsuario(
         @RequestParam("apelido") final String usuarioApelido) {
 

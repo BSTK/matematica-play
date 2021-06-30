@@ -1,4 +1,4 @@
-package com.caqqi.matematicaplay.operacao.core;
+package com.caqqi.matematicaplay.operacao.core.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
