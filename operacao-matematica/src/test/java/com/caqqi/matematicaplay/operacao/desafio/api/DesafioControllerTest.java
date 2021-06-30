@@ -1,6 +1,6 @@
 package com.caqqi.matematicaplay.operacao.desafio.api;
 
-import com.caqqi.matematicaplay.operacao.desafio.domain.entity.Desafio;
+import com.caqqi.matematicaplay.operacao.desafio.domain.Desafio;
 import com.caqqi.matematicaplay.operacao.desafio.domain.service.DesafioGeradorService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

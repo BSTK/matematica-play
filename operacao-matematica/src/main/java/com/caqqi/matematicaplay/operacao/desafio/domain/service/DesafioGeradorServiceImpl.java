@@ -1,7 +1,7 @@
 package com.caqqi.matematicaplay.operacao.desafio.domain.service;
 
 import com.caqqi.matematicaplay.operacao.desafio.domain.DesafioOperacao;
-import com.caqqi.matematicaplay.operacao.desafio.domain.entity.Desafio;
+import com.caqqi.matematicaplay.operacao.desafio.domain.Desafio;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;

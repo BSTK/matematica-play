@@ -1,6 +1,6 @@
 package com.caqqi.matematicaplay.operacao.desafio.domain.repository;
 
-import com.caqqi.matematicaplay.operacao.desafio.domain.entity.Desafio;
+import com.caqqi.matematicaplay.operacao.desafio.domain.Desafio;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
