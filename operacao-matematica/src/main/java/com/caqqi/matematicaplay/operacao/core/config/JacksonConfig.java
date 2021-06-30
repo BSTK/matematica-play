@@ -1,6 +1,5 @@
 package com.caqqi.matematicaplay.operacao.core.config;
 
-import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
@@ -12,16 +11,16 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 public class JacksonConfig {
 
     @Bean
-    public Module hibernateModule() {
-        return new Hibernate5Module();
+    public ObjectMapper ObjectMapper() {
+        return new ObjectMapper()
+            .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
     }
 
     @Bean
     public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
         final ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(hibernateModule());
+        mapper.registerModule(new Hibernate5Module());
         mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
         return new MappingJackson2HttpMessageConverter(mapper);
     }
-
 }

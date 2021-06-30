@@ -1,7 +1,7 @@
 package com.caqqi.matematicaplay.operacao.desafio.domain.service;
 
-import com.caqqi.matematicaplay.operacao.desafio.domain.DesafioOperacao;
 import com.caqqi.matematicaplay.operacao.desafio.domain.Desafio;
+import com.caqqi.matematicaplay.operacao.desafio.domain.DesafioOperacao;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
@@ -44,12 +44,19 @@ public class DesafioGeradorServiceImpl implements DesafioGeradorService {
 
     private int[] alternativas(final int fatorA, final int fatorB, final String operacao) {
         final int alternativaCorreta = DesafioOperacao.of(operacao).execute(fatorA, fatorB);
+        final int[] alternativas = new int[] { fator(), fator(), fator(), alternativaCorreta};
 
-        return new int[] {
-            fator(),
-            fator(),
-            fator(),
-            alternativaCorreta
-        };
+        return embaralhar(alternativas);
+    }
+
+    private int[] embaralhar(final int[] alternativas) {
+        for (int i = 0; i < alternativas.length; i++) {
+            int randomIndexToSwap = random.nextInt(alternativas.length);
+            int indexTemporario = alternativas[randomIndexToSwap];
+            alternativas[randomIndexToSwap] = alternativas[i];
+            alternativas[i] = indexTemporario;
+        }
+
+        return alternativas;
     }
 }
