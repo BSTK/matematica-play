@@ -1,10 +1,10 @@
-package com.caqqi.matematicaplay.gameficacao;
+package com.caqqi.matematicaplay;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MatematicaPlayGameficacaoApplicationTests {
+class AppTests {
 
     @Test
     void contextLoads() {
