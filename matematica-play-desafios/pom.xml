@@ -11,7 +11,7 @@
 		<relativePath/>
 	</parent>
 
-	<groupId>com.caqqi.matematicaplay.operacao</groupId>
+	<groupId>com.caqqi.matematicaplay.desafios</groupId>
 	<artifactId>matematica-play-desafios</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>matematica-play-desafios</name>
