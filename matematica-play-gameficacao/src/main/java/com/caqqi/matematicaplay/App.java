@@ -1,4 +1,4 @@
-package com.caqqi.matematicaplay.desafios;
+package com.caqqi.matematicaplay;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

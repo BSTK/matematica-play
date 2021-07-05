@@ -1,4 +1,4 @@
-package com.caqqi.matematicaplay.desafios.core.config;
+package com.caqqi.matematicaplay.gameficacao.core.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

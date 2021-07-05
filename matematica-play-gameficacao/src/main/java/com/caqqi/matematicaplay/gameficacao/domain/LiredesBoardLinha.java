@@ -1,4 +1,4 @@
-package com.caqqi.matematicaplay.desafios.domain;
+package com.caqqi.matematicaplay.gameficacao.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

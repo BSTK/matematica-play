@@ -1,6 +1,6 @@
-package com.caqqi.matematicaplay.desafios.domain.entity;
+package com.caqqi.matematicaplay.gameficacao.domain.entity;
 
-import com.caqqi.matematicaplay.desafios.domain.enums.BadgeTipo;
+import com.caqqi.matematicaplay.gameficacao.domain.enums.BadgeTipo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-
+com.caqqi.matematicaplay
 @Data
 @Entity
 @NoArgsConstructor

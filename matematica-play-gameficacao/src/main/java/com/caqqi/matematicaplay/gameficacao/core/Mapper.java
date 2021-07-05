@@ -1,4 +1,4 @@
-package com.caqqi.matematicaplay.desafios.core;
+package com.caqqi.matematicaplay.gameficacao.core;
 
 import org.modelmapper.ModelMapper;
 

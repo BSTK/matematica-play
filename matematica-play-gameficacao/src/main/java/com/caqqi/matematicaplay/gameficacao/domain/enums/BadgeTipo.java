@@ -1,4 +1,4 @@
-package com.caqqi.matematicaplay.desafios.domain.enums;
+package com.caqqi.matematicaplay.gameficacao.domain.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

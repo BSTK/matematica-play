@@ -1,4 +1,4 @@
-package com.caqqi.matematicaplay.desafios.core.config;
+package com.caqqi.matematicaplay.gameficacao.core.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
