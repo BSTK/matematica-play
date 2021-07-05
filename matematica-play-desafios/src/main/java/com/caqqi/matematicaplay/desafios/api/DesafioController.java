@@ -1,4 +1,4 @@
-package com.caqqi.matematicaplay.desafio.api;
+package com.caqqi.matematicaplay.desafios.api;
 
 import com.caqqi.matematicaplay.desafios.api.response.DesafioResponse;
 import com.caqqi.matematicaplay.desafios.core.Mapper;
@@ -19,7 +19,7 @@ public class DesafioController {
 
     private final DesafioGeradorService desafioGeradorService;
 
-    @GetMapping("/aleatorio")
+    @GetMapping
     public ResponseEntity<DesafioResponse> desafioAleatorio() {
         final Desafio desafio = desafioGeradorService.gerarDesafioAleatorio();
         final DesafioResponse desafioResponse = Mapper.to(desafio, DesafioResponse.class);

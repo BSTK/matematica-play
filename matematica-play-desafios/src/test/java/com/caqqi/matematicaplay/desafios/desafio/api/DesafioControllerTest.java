@@ -1,6 +1,6 @@
 package com.caqqi.matematicaplay.desafios.desafio.api;
 
-import com.caqqi.matematicaplay.desafio.api.DesafioController;
+import com.caqqi.matematicaplay.desafios.api.DesafioController;
 import com.caqqi.matematicaplay.desafios.domain.Desafio;
 import com.caqqi.matematicaplay.desafios.domain.service.DesafioGeradorService;
 import org.junit.jupiter.api.DisplayName;
@@ -36,7 +36,7 @@ public class DesafioControllerTest {
         when(desafioGeradorService.gerarDesafioAleatorio()).thenReturn(desafio);
 
         mockMvc.perform(
-            get(ENDPOINT_API_V1_DESAFIOS.concat("/aleatorio")))
+            get(ENDPOINT_API_V1_DESAFIOS))
         .andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON))
         .andExpect(jsonPath("$.fatorA").value(desafio.getFatorA()))
