@@ -25,8 +25,8 @@ public class BadgeProcessadorOuroTest {
     }
 
     @Test
-    @DisplayName("Deve retornar badge tipo vazio quando quantidade de score cards for igual que 400")
-    public void deveRetornarBadgeTipoVazioQuandoQuantidadeDeScorCardsForIgualQue150() {
+    @DisplayName("Deve retornar badge tipo vazio quando total de pontos for igual que 400")
+    public void deveRetornarBadgeTipoVazioQuandoTotalDePontosForIgualQue150() {
         Optional<BadgeTipo> badgeTipo = processador.processarBadgeOptional(400,
             Collections.emptyList(), new DesafioTentativaRespostaRequest());
 
@@ -43,8 +43,8 @@ public class BadgeProcessadorOuroTest {
     }
 
     @Test
-    @DisplayName("Deve retornar badge tipo vazio quando quantidade de score for negativo")
-    public void deveRetornarBadgeTipoVazioQuandoQuantidadeDeScorCardsForVazia() {
+    @DisplayName("Deve retornar badge tipo vazio quando total de pontos for negativo")
+    public void deveRetornarBadgeTipoVazioQuandoTotalDePontosForVazia() {
         Optional<BadgeTipo> badgeTipo = processador.processarBadgeOptional(-1,
             Collections.emptyList(), new DesafioTentativaRespostaRequest());
 
@@ -52,8 +52,8 @@ public class BadgeProcessadorOuroTest {
     }
 
     @Test
-    @DisplayName("Deve retornar badge tipo vazio quando quantidade de score cards for nula")
-    public void deveRetornarBadgeTipoVazioQuandoQuantidadeDeScorCardsForNula() {
+    @DisplayName("Deve retornar badge tipo vazio quando total de pontos for nula")
+    public void deveRetornarBadgeTipoVazioQuandoTotalDePontosForNula() {
         Optional<BadgeTipo> badgeTipo = processador.processarBadgeOptional(null,
             null, new DesafioTentativaRespostaRequest());
 
