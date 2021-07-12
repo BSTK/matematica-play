@@ -11,7 +11,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 public class JacksonConfig {
 
     @Bean
-    public ObjectMapper ObjectMapper() {
+    public ObjectMapper objectMapper() {
         return new ObjectMapper()
             .disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
     }
