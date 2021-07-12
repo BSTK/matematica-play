@@ -1,17 +1,13 @@
 package com.caqqi.matematicaplay.gameficacao.domain.service.badgeprocessador;
 
 import com.caqqi.matematicaplay.gameficacao.api.request.DesafioTentativaRespostaRequest;
-import com.caqqi.matematicaplay.gameficacao.domain.entity.ScoreCard;
 import com.caqqi.matematicaplay.gameficacao.domain.enums.BadgeTipo;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.IntStream;
 
 public class BadgeProcessadorOuroTest {
 
