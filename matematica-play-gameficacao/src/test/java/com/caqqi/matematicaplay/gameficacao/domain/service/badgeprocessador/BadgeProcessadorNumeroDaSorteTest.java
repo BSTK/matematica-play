@@ -1,0 +1,59 @@
+package com.caqqi.matematicaplay.gameficacao.domain.service.badgeprocessador;
+
+import com.caqqi.matematicaplay.gameficacao.api.request.DesafioTentativaRespostaRequest;
+import com.caqqi.matematicaplay.gameficacao.domain.enums.BadgeTipo;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import java.util.Collections;
+import java.util.Optional;
+
+public class BadgeProcessadorNumeroDaSorteTest {
+
+    private BadgeProcessador processador = new BadgeProcessadorNumeroDaSorte();
+
+    @Test
+    @DisplayName("Deve retornar badge tipo número da sorte quando fator A for 42")
+    public void deveRetornarBadgeTipoNumeroDaSorteQuandoFatorAFor42() {
+        final DesafioTentativaRespostaRequest request = new DesafioTentativaRespostaRequest();
+        request.setFatorA(42);
+        request.setFatorB(40);
+
+        Optional<BadgeTipo> badgeTipo = processador.processarBadgeOptional(1,
+            Collections.emptyList(), request);
+
+        Assertions.assertThat(badgeTipo)
+            .isNotEmpty()
+            .isEqualTo(Optional.of(BadgeTipo.NUMERO_DA_SORTE));
+    }
+
+    @Test
+    @DisplayName("Deve retornar badge tipo número da sorte quando fator B for 42")
+    public void deveRetornarBadgeTipoNumeroDaSorteQuandoFatorBFor42() {
+        final DesafioTentativaRespostaRequest request = new DesafioTentativaRespostaRequest();
+        request.setFatorA(0);
+        request.setFatorB(42);
+
+        Optional<BadgeTipo> badgeTipo = processador.processarBadgeOptional(1,
+            Collections.emptyList(), request);
+
+        Assertions.assertThat(badgeTipo)
+            .isNotEmpty()
+            .isEqualTo(Optional.of(BadgeTipo.NUMERO_DA_SORTE));
+    }
+
+    @Test
+    @DisplayName("Deve retornar badge tipo vazio quando fator A e fator B for diferente de 42")
+    public void deveRetornarBadgeTipoVazioQuandoFatorAEFatorBForDiferenteDe42() {
+        final DesafioTentativaRespostaRequest request = new DesafioTentativaRespostaRequest();
+        request.setFatorA(10);
+        request.setFatorB(10);
+
+        Optional<BadgeTipo> badgeTipo = processador.processarBadgeOptional(1,
+            Collections.emptyList(), request);
+
+        Assertions.assertThat(badgeTipo).isEmpty();
+    }
+
+}
