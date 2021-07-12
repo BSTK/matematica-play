@@ -6,6 +6,7 @@ import com.caqqi.matematicaplay.gameficacao.domain.enums.BadgeTipo;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Component
@@ -22,7 +23,7 @@ public class BadgeProcessadorOuro implements BadgeProcessador {
     public Optional<BadgeTipo> processarBadgeOptional(final Integer totalPontosAtual,
                                                       final List<ScoreCard> scoreCards,
                                                       final DesafioTentativaRespostaRequest request) {
-        return totalPontosAtual > QUANTIDADE_SCORE_CARDS_OURO
+        return Objects.nonNull(totalPontosAtual) && totalPontosAtual > QUANTIDADE_SCORE_CARDS_OURO
             ? Optional.of(BadgeTipo.OURO)
             : Optional.empty();
     }
