@@ -6,8 +6,9 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collections;
 import java.util.Optional;
+
+import static java.util.Collections.emptyList;
 
 public class BadgeProcessadorNumeroDaSorteTest {
 
@@ -21,7 +22,7 @@ public class BadgeProcessadorNumeroDaSorteTest {
         request.setFatorB(40);
 
         Optional<BadgeTipo> badgeTipo = processador.processarBadgeOptional(1,
-            Collections.emptyList(), request);
+            emptyList(), request);
 
         Assertions.assertThat(badgeTipo)
             .isNotEmpty()
@@ -36,7 +37,7 @@ public class BadgeProcessadorNumeroDaSorteTest {
         request.setFatorB(42);
 
         Optional<BadgeTipo> badgeTipo = processador.processarBadgeOptional(1,
-            Collections.emptyList(), request);
+            emptyList(), request);
 
         Assertions.assertThat(badgeTipo)
             .isNotEmpty()
@@ -51,9 +52,18 @@ public class BadgeProcessadorNumeroDaSorteTest {
         request.setFatorB(10);
 
         Optional<BadgeTipo> badgeTipo = processador.processarBadgeOptional(1,
-            Collections.emptyList(), request);
+            emptyList(), request);
 
         Assertions.assertThat(badgeTipo).isEmpty();
+    }
+
+    @Test
+    @DisplayName("Deve lançar excesão quando a request for nula")
+    public void deveLancarExcesaoQuandoARequestForNula() {
+        Assertions
+            .assertThatIllegalArgumentException()
+            .isThrownBy(() -> processador.processarBadgeOptional(1, emptyList(), null))
+            .withMessage("DesafioTentativaRespostaRequest não pode ser nula");
     }
 
 }

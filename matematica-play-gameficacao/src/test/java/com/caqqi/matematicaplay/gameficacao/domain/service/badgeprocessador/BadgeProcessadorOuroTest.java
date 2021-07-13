@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 import java.util.Collections;
 import java.util.Optional;
 
+import static java.util.Collections.emptyList;
+
 public class BadgeProcessadorOuroTest {
 
     private BadgeProcessador processador = new BadgeProcessadorOuro();
@@ -52,11 +54,11 @@ public class BadgeProcessadorOuroTest {
     }
 
     @Test
-    @DisplayName("Deve retornar badge tipo vazio quando total de pontos for nula")
-    public void deveRetornarBadgeTipoVazioQuandoTotalDePontosForNula() {
-        Optional<BadgeTipo> badgeTipo = processador.processarBadgeOptional(null,
-            null, new DesafioTentativaRespostaRequest());
-
-        Assertions.assertThat(badgeTipo).isEmpty();
+    @DisplayName("Deve lançar excesão quando total de pontos for nula")
+    public void deveLancarExcesaoQuandoTotalDePontosForNula() {
+        Assertions
+            .assertThatIllegalArgumentException()
+            .isThrownBy(() -> processador.processarBadgeOptional(null, emptyList(), null))
+            .withMessage("totalPontosAtual não pode ser nulo");
     }
 }

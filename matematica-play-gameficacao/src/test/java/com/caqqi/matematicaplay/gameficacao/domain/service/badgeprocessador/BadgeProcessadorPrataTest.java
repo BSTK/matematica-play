@@ -71,11 +71,11 @@ public class BadgeProcessadorPrataTest {
     }
 
     @Test
-    @DisplayName("Deve retornar badge tipo vazio quando quantidade de score cards for nula")
-    public void deveRetornarBadgeTipoVazioQuandoQuantidadeDeScorCardsForNula() {
-        Optional<BadgeTipo> badgeTipo = processador.processarBadgeOptional(1,
-            null, new DesafioTentativaRespostaRequest());
-
-        Assertions.assertThat(badgeTipo).isEmpty();
+    @DisplayName("Deve lançar excesão quando score cards for nulo")
+    public void deveLancarExcesaoQuandoScoreCardsForNulo() {
+        Assertions
+            .assertThatIllegalArgumentException()
+            .isThrownBy(() -> processador.processarBadgeOptional(null, null, null))
+            .withMessage("scoreCards não pode ser nulo");
     }
 }

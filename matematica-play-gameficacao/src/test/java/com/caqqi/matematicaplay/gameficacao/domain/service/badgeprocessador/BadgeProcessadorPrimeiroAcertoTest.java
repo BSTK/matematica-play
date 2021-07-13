@@ -41,4 +41,13 @@ public class BadgeProcessadorPrimeiroAcertoTest {
         Assertions.assertThat(badgeTipoA).isEmpty();
         Assertions.assertThat(badgeTipoB).isEmpty();
     }
+
+    @Test
+    @DisplayName("Deve lançar excesão quando score cards for nulo")
+    public void deveLancarExcesaoQuandoScoreCardsForNulo() {
+        Assertions
+            .assertThatIllegalArgumentException()
+            .isThrownBy(() -> processador.processarBadgeOptional(null, null, null))
+            .withMessage("scoreCards não pode ser nulo");
+    }
 }

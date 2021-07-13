@@ -46,4 +46,14 @@ public class BadgeProcessadorBronzeTest {
 
         Assertions.assertThat(badgeTipo).isEmpty();
     }
+
+    @Test
+    @DisplayName("Deve retornar badge tipo vazio quando total de pontos for nulo")
+    public void deveRetornarBadgeTipoVazioQuandoTotalPontosForNulo() {
+        Optional<BadgeTipo> badgeTipo = processador.processarBadgeOptional(null,
+            Collections.emptyList(),
+            new DesafioTentativaRespostaRequest());
+
+        Assertions.assertThat(badgeTipo).isEmpty();
+    }
 }

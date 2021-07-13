@@ -4,6 +4,7 @@ import com.caqqi.matematicaplay.gameficacao.api.request.DesafioTentativaResposta
 import com.caqqi.matematicaplay.gameficacao.domain.entity.ScoreCard;
 import com.caqqi.matematicaplay.gameficacao.domain.enums.BadgeTipo;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +23,8 @@ public class BadgeProcessadorPrimeiroAcerto implements BadgeProcessador {
     public Optional<BadgeTipo> processarBadgeOptional(final Integer totalPontosAtual,
                                                       final List<ScoreCard> scoreCards,
                                                       final DesafioTentativaRespostaRequest request) {
+        Assert.notNull(scoreCards, "scoreCards não pode ser nulo");
+
         return scoreCards.size() == QUANTIDADE_SCORE_CARDS_PRIMEIRO_ACERTO
             ? Optional.of(BadgeTipo.PRIMEIRO_ACERTO)
             : Optional.empty();
