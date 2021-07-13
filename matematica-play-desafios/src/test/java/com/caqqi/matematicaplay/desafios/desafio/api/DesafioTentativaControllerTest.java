@@ -8,13 +8,12 @@ import com.caqqi.matematicaplay.desafios.domain.DesafioOperacao;
 import com.caqqi.matematicaplay.desafios.domain.entity.DesafioTentativaResposta;
 import com.caqqi.matematicaplay.desafios.domain.service.DesafioService;
 import com.caqqi.matematicaplay.desafios.usuario.domain.entity.Usuario;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.json.AutoConfigureJsonTesters;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.json.JacksonTester;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -25,7 +24,6 @@ import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@AutoConfigureJsonTesters
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(DesafioTentativaController.class)
 public class DesafioTentativaControllerTest {
@@ -39,7 +37,7 @@ public class DesafioTentativaControllerTest {
     private MockMvc mockMvc;
 
     @Autowired
-    private JacksonTester<DesafioTentativaRespostaRequest> jsonTentativaRespostaRequest;
+    private ObjectMapper mapper;
 
     @Test
     @DisplayName("Deve postar uma tentativa com resultado correto")
@@ -62,7 +60,7 @@ public class DesafioTentativaControllerTest {
         this.mockMvc.perform(
             post(ENDPOINT_API_V1_TENTATIVAS)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(jsonTentativaRespostaRequest.write(request).getJson()))
+                .content(mapper.writeValueAsString(request)))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.fatorA").value(respostaEsperadaResponse.getFatorA()))
@@ -81,7 +79,7 @@ public class DesafioTentativaControllerTest {
         this.mockMvc.perform(
             post(ENDPOINT_API_V1_TENTATIVAS)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(jsonTentativaRespostaRequest.write(request).getJson()))
+                .content(mapper.writeValueAsString(request)))
             .andExpect(status().isBadRequest());
     }
 
@@ -94,7 +92,7 @@ public class DesafioTentativaControllerTest {
         this.mockMvc.perform(
             post(ENDPOINT_API_V1_TENTATIVAS)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(jsonTentativaRespostaRequest.write(request).getJson()))
+                .content(mapper.writeValueAsString(request)))
             .andExpect(status().isBadRequest());
     }
 
@@ -107,7 +105,7 @@ public class DesafioTentativaControllerTest {
         this.mockMvc.perform(
             post(ENDPOINT_API_V1_TENTATIVAS)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(jsonTentativaRespostaRequest.write(request).getJson()))
+                .content(mapper.writeValueAsString(request)))
             .andExpect(status().isBadRequest());
     }
 
@@ -120,7 +118,7 @@ public class DesafioTentativaControllerTest {
         this.mockMvc.perform(
             post(ENDPOINT_API_V1_TENTATIVAS)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(jsonTentativaRespostaRequest.write(request).getJson()))
+                .content(mapper.writeValueAsString(request)))
             .andExpect(status().isBadRequest());
     }
 
@@ -133,7 +131,7 @@ public class DesafioTentativaControllerTest {
         this.mockMvc.perform(
             post(ENDPOINT_API_V1_TENTATIVAS)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(jsonTentativaRespostaRequest.write(request).getJson()))
+                .content(mapper.writeValueAsString(request)))
             .andExpect(status().isBadRequest());
     }
 
@@ -146,7 +144,7 @@ public class DesafioTentativaControllerTest {
         this.mockMvc.perform(
             post(ENDPOINT_API_V1_TENTATIVAS)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(jsonTentativaRespostaRequest.write(request).getJson()))
+                .content(mapper.writeValueAsString(request)))
             .andExpect(status().isBadRequest());
     }
 
@@ -159,7 +157,7 @@ public class DesafioTentativaControllerTest {
         this.mockMvc.perform(
             post(ENDPOINT_API_V1_TENTATIVAS)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(jsonTentativaRespostaRequest.write(request).getJson()))
+                .content(mapper.writeValueAsString(request)))
             .andExpect(status().isBadRequest());
     }
 
@@ -172,7 +170,7 @@ public class DesafioTentativaControllerTest {
         this.mockMvc.perform(
             post(ENDPOINT_API_V1_TENTATIVAS)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(jsonTentativaRespostaRequest.write(request).getJson()))
+                .content(mapper.writeValueAsString(request)))
             .andExpect(status().isBadRequest());
     }
 
@@ -185,7 +183,7 @@ public class DesafioTentativaControllerTest {
         this.mockMvc.perform(
             post(ENDPOINT_API_V1_TENTATIVAS)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(jsonTentativaRespostaRequest.write(request).getJson()))
+                .content(mapper.writeValueAsString(request)))
             .andExpect(status().isBadRequest());
     }
 
