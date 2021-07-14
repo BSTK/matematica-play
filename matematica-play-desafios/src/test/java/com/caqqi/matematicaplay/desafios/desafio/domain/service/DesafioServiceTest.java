@@ -5,6 +5,7 @@ import com.caqqi.matematicaplay.desafios.domain.entity.DesafioTentativaResposta;
 import com.caqqi.matematicaplay.desafios.domain.repository.DesafioTentativaRespostaRepository;
 import com.caqqi.matematicaplay.desafios.domain.service.DesafioService;
 import com.caqqi.matematicaplay.desafios.domain.service.DesafioServiceImpl;
+import com.caqqi.matematicaplay.desafios.domain.service.GameficacaoServiceCliente;
 import com.caqqi.matematicaplay.desafios.usuario.domain.entity.Usuario;
 import com.caqqi.matematicaplay.desafios.usuario.domain.repository.UsuarioRepository;
 import org.assertj.core.api.Assertions;
@@ -36,12 +37,16 @@ public class DesafioServiceTest {
     private UsuarioRepository usuarioRepository;
 
     @Mock
+    private GameficacaoServiceCliente gameficacaoServiceCliente;
+
+    @Mock
     private DesafioTentativaRespostaRepository desafioTentativaRespostaRepository;
 
     @BeforeEach
     public void setUp() {
         desafioService = new DesafioServiceImpl(
             usuarioRepository,
+            gameficacaoServiceCliente,
             desafioTentativaRespostaRepository
         );
     }
@@ -162,6 +167,7 @@ public class DesafioServiceTest {
 
         verify(usuarioRepository).save(new Usuario(request.getApelido()));
         verify(desafioTentativaRespostaRepository).save(desafioTentativaResposta);
+        verify(gameficacaoServiceCliente).enviarTentativa(desafioTentativaResposta);
     }
 
     private void executaValidacaoErrada(final DesafioTentativaRespostaRequest request) {
@@ -172,5 +178,6 @@ public class DesafioServiceTest {
 
         verify(usuarioRepository).save(new Usuario(request.getApelido()));
         verify(desafioTentativaRespostaRepository).save(desafioTentativaResposta);
+        verify(gameficacaoServiceCliente).enviarTentativa(desafioTentativaResposta);
     }
 }

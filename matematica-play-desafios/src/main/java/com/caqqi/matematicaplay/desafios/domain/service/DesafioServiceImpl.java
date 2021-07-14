@@ -18,6 +18,7 @@ import java.util.List;
 public class DesafioServiceImpl implements DesafioService {
 
     private final UsuarioRepository usuarioRepository;
+    private final GameficacaoServiceCliente gameficacaoServiceCliente;
     private final DesafioTentativaRespostaRepository desafioTentativaRespostaRepository;
 
     @Override
@@ -52,7 +53,12 @@ public class DesafioServiceImpl implements DesafioService {
                 respostaCorreta,
                 tentativaRequest.getOperacao());
 
-        return desafioTentativaRespostaRepository.save(desafioTentativaResposta);
+        final DesafioTentativaResposta tentativaRespostaSalva = desafioTentativaRespostaRepository.save(desafioTentativaResposta);
+        final Boolean gameficacaoResponse = gameficacaoServiceCliente.enviarTentativa(tentativaRespostaSalva);
+
+        log.info("Request Ok para serviço de Gameficação: {}", gameficacaoResponse);
+
+        return tentativaRespostaSalva;
     }
 
 }
