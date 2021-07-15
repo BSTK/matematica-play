@@ -20,7 +20,7 @@ public class GameficacaoServiceCliente {
     private final RestTemplate restTemplate;
 
     @Autowired
-    public GameficacaoServiceCliente(@Value("#{microservico.gamificacao.url}")
+    public GameficacaoServiceCliente(@Value("${microservico.gamificacao.url}")
                                      final String gamificacaoUrl,
                                      final RestTemplateBuilder templateBuilder) {
         this.gamificacaoUrl = gamificacaoUrl;
