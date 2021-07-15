@@ -1,6 +1,5 @@
 package com.caqqi.matematicaplay.desafios.usuario.api;
 
-
 import com.caqqi.matematicaplay.desafios.api.response.UsuarioResponse;
 import com.caqqi.matematicaplay.desafios.core.Mapper;
 import com.caqqi.matematicaplay.desafios.usuario.domain.entity.Usuario;
@@ -28,5 +27,12 @@ public class UsuarioController {
         final List<Usuario> usuariosPorIdLista = usuarioService.usuariosPorIds(usuariosId);
         final List<UsuarioResponse> usuariosPorIdResponse = Mapper.list(usuariosPorIdLista, UsuarioResponse.class);
         return ResponseEntity.ok(usuariosPorIdResponse);
+    }
+
+    @GetMapping("/{apelido}")
+    public ResponseEntity<UsuarioResponse> usuarioPorApelido(@PathVariable("apelido") final String apelido) {
+        final Usuario usuario = usuarioService.usuarioPorApelido(apelido);
+        final UsuarioResponse usuarioResponse = Mapper.to(usuario, UsuarioResponse.class);
+        return ResponseEntity.ok(usuarioResponse);
     }
 }
