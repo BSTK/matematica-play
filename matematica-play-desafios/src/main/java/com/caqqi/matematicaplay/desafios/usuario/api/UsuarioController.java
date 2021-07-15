@@ -7,10 +7,7 @@ import com.caqqi.matematicaplay.desafios.usuario.domain.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,17 +19,17 @@ public class UsuarioController {
 
     private final UsuarioService usuarioService;
 
+    @GetMapping
+    public ResponseEntity<UsuarioResponse> usuarioPorApelido(@RequestParam("apelido") final String apelido) {
+        final Usuario usuario = usuarioService.usuarioPorApelido(apelido);
+        final UsuarioResponse usuarioResponse = Mapper.to(usuario, UsuarioResponse.class);
+        return ResponseEntity.ok(usuarioResponse);
+    }
+
     @GetMapping("/{usuariosId}")
     public ResponseEntity<List<UsuarioResponse>> usuariosPorIds(@PathVariable("usuariosId") final List<Long> usuariosId) {
         final List<Usuario> usuariosPorIdLista = usuarioService.usuariosPorIds(usuariosId);
         final List<UsuarioResponse> usuariosPorIdResponse = Mapper.list(usuariosPorIdLista, UsuarioResponse.class);
         return ResponseEntity.ok(usuariosPorIdResponse);
-    }
-
-    @GetMapping("/{apelido}")
-    public ResponseEntity<UsuarioResponse> usuarioPorApelido(@PathVariable("apelido") final String apelido) {
-        final Usuario usuario = usuarioService.usuarioPorApelido(apelido);
-        final UsuarioResponse usuarioResponse = Mapper.to(usuario, UsuarioResponse.class);
-        return ResponseEntity.ok(usuarioResponse);
     }
 }

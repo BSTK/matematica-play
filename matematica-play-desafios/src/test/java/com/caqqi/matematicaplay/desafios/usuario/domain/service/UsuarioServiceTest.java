@@ -10,9 +10,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -43,8 +46,42 @@ public class UsuarioServiceTest {
         Assertions.assertThat(usuariosPorId)
             .isNotNull()
             .isNotEmpty()
-            .hasSize(usuarios.size())
-            .containsAll(usuarios);
+            .containsAll(usuarios)
+            .hasSize(usuarios.size());
+    }
+
+    @Test
+    @DisplayName("Deve retornar uma lista de usuarios vazia quando não houver usuario cadastrados com ids informados")
+    public void deveRetornarUmaListaDeUsuariosVaziaQuandoNaoHouverUsuarioCadastradosComIdsInformados() {
+        when(usuarioRepository.findAllById(anyList())).thenReturn(Collections.emptyList());
+
+        List<Usuario> usuariosPorId = usuarioService.usuariosPorIds(List.of(1L, 2L, 3L));
+
+        Assertions.assertThat(usuariosPorId)
+            .isNotNull()
+            .isEmpty();
+    }
+
+    @Test
+    @DisplayName("Deve retornar um usuário por apelido")
+    public void deveRetornarUmUsuarioPorApelido() {
+        when(usuarioRepository.buscarPorApelido(anyString()))
+            .thenReturn(Optional.of(new Usuario("apelido-a")));
+
+        Usuario usuario = usuarioService.usuarioPorApelido("apelido-a");
+
+        Assertions.assertThat(usuario).isNotNull();
+        Assertions.assertThat(usuario.getApelido()).isEqualTo("apelido-a");
+    }
+
+    @Test
+    @DisplayName("Deve lancar excesão ao buscar um usuário por apelido")
+    public void deveLancarExcesaoAoBuscarUmUsuarioPorApelido() {
+        when(usuarioRepository.buscarPorApelido(anyString())).thenReturn(Optional.empty());
+
+        Assertions.assertThatThrownBy(() -> usuarioService.usuarioPorApelido("apelido-a"))
+            .isInstanceOf(IllegalArgumentException.class)
+            .hasMessage("Não existe usuário para o apelido: apelido-a");
     }
 
 }
