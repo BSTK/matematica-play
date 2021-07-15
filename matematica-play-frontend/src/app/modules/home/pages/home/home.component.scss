@@ -16,4 +16,42 @@
     font-weight: 400;
     color: #FE4848;
   }
+
+  .badge-ouro {
+    color: #fff;
+    background-color: #ffc107;
+  }
+
+  .badge-prata {
+    color: #fff;
+    background-color: #dc3545;
+  }
+
+  .badge-bronze {
+    color: #fff;
+    background-color: #dc3545;
+  }
+
+  .badge-numero-sorte {
+    color: #fff;
+    background-color: #28a745;
+  }
+
+  .badge-pill {
+    padding: 15px;
+    border-radius: 10rem;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    margin: 5px 5px;
+  }
 }
