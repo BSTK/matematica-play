@@ -18,8 +18,8 @@ public interface ScoreRepository extends JpaRepository<ScoreCard, Long> {
     List<ScoreCard> scoresCardsPorUsuario(@Param("usuarioId") final Long usuarioId);
 
     @Query("SELECT NEW com.caqqi.matematicaplay.gameficacao.domain.LiredesBoardLinha("
-        + " S.usuarioId, "
-        + " SUM(S.pontos)) "
+        + " s.usuarioId, "
+        + " SUM(s.pontos)) "
         + " FROM ScoreCard s "
         + " GROUP BY s.usuarioId "
         + " ORDER BY sum(s.pontos) DESC")
