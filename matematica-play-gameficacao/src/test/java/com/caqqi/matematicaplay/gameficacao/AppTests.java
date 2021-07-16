@@ -1,5 +1,6 @@
 package com.caqqi.matematicaplay.gameficacao;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -7,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 class AppTests {
 
     @Test
-    void contextLoads() { }
+    void contextLoads() {
+        Assertions.assertDoesNotThrow(() -> {});
+    }
 
 }
