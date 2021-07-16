@@ -4,6 +4,7 @@ import com.caqqi.matematicaplay.desafios.domain.Desafio;
 import com.caqqi.matematicaplay.desafios.domain.DesafioOperacao;
 import org.springframework.stereotype.Service;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 @Service
@@ -12,13 +13,13 @@ public class DesafioGeradorServiceImpl implements DesafioGeradorService {
     private static final int FATOR_MINIMO = 11;
     private static final int FATOR_MAXIMO = 100;
 
-    private final Random random;
+    private final SecureRandom random;
 
     public DesafioGeradorServiceImpl() {
-        this.random = new Random();
+        this.random = new SecureRandom();
     }
 
-    public DesafioGeradorServiceImpl(final Random random) {
+    public DesafioGeradorServiceImpl(final SecureRandom random) {
         this.random = random;
     }
 

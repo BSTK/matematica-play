@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 import static org.mockito.BDDMockito.given;
 
@@ -21,7 +21,7 @@ import static org.mockito.BDDMockito.given;
 class DesafioGeradorServiceTest {
 
     @Spy
-    private Random random;
+    private SecureRandom random;
 
     private DesafioGeradorService desafioGeradorService;
 
