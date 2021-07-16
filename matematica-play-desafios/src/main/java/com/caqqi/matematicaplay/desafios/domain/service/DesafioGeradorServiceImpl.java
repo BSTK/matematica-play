@@ -5,7 +5,6 @@ import com.caqqi.matematicaplay.desafios.domain.DesafioOperacao;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
-import java.util.Random;
 
 @Service
 public class DesafioGeradorServiceImpl implements DesafioGeradorService {

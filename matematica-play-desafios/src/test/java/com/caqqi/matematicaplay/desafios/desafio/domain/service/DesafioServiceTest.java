@@ -59,8 +59,9 @@ class DesafioServiceTest {
 
         List<DesafioTentativaResposta> tentativaRespostas = desafioService.ultimasTentivas("USUARIO_AA");
 
-        Assertions.assertThat(tentativaRespostas).isNotNull();
-        Assertions.assertThat(tentativaRespostas).isEmpty();
+        Assertions.assertThat(tentativaRespostas)
+            .isNotNull()
+            .isEmpty();
 
         verify(desafioTentativaRespostaRepository).findTop10ByUsuarioApelidoOrderByIdDesc(anyString());
     }

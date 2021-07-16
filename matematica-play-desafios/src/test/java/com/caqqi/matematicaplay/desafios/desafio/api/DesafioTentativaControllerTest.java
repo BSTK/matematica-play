@@ -19,7 +19,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -54,7 +53,7 @@ class DesafioTentativaControllerTest {
         final DesafioTentativaRespostaResponse respostaEsperadaResponse = Mapper.to(respostaEsperada, DesafioTentativaRespostaResponse.class);
 
         given(desafioService
-            .verificarResposta(eq(request)))
+            .verificarResposta(request))
             .willReturn(respostaEsperada);
 
         this.mockMvc.perform(
