@@ -10,13 +10,13 @@ import java.util.Optional;
 
 import static java.util.Collections.emptyList;
 
-public class BadgeProcessadorNumeroDaSorteTest {
+class BadgeProcessadorNumeroDaSorteTest {
 
     private BadgeProcessador processador = new BadgeProcessadorNumeroDaSorte();
 
     @Test
     @DisplayName("Deve retornar badge tipo número da sorte quando fator A for 42")
-    public void deveRetornarBadgeTipoNumeroDaSorteQuandoFatorAFor42() {
+    void deveRetornarBadgeTipoNumeroDaSorteQuandoFatorAFor42() {
         final DesafioTentativaRespostaRequest request = new DesafioTentativaRespostaRequest();
         request.setFatorA(42);
         request.setFatorB(40);
@@ -31,7 +31,7 @@ public class BadgeProcessadorNumeroDaSorteTest {
 
     @Test
     @DisplayName("Deve retornar badge tipo número da sorte quando fator B for 42")
-    public void deveRetornarBadgeTipoNumeroDaSorteQuandoFatorBFor42() {
+    void deveRetornarBadgeTipoNumeroDaSorteQuandoFatorBFor42() {
         final DesafioTentativaRespostaRequest request = new DesafioTentativaRespostaRequest();
         request.setFatorA(0);
         request.setFatorB(42);
@@ -46,7 +46,7 @@ public class BadgeProcessadorNumeroDaSorteTest {
 
     @Test
     @DisplayName("Deve retornar badge tipo vazio quando fator A e fator B for diferente de 42")
-    public void deveRetornarBadgeTipoVazioQuandoFatorAEFatorBForDiferenteDe42() {
+    void deveRetornarBadgeTipoVazioQuandoFatorAEFatorBForDiferenteDe42() {
         final DesafioTentativaRespostaRequest request = new DesafioTentativaRespostaRequest();
         request.setFatorA(10);
         request.setFatorB(10);
@@ -59,7 +59,7 @@ public class BadgeProcessadorNumeroDaSorteTest {
 
     @Test
     @DisplayName("Deve lançar excesão quando a request for nula")
-    public void deveLancarExcesaoQuandoARequestForNula() {
+    void deveLancarExcesaoQuandoARequestForNula() {
         Assertions
             .assertThatIllegalArgumentException()
             .isThrownBy(() -> processador.processarBadgeOptional(1, emptyList(), null))

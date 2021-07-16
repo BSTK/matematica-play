@@ -11,13 +11,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-public class BadgeProcessadorPrimeiroAcertoTest {
+class BadgeProcessadorPrimeiroAcertoTest {
 
     private BadgeProcessador processador = new BadgeProcessadorPrimeiroAcerto();
 
     @Test
     @DisplayName("Deve retornar badge tipo primeiro acerto quando scorecards for 1")
-    public void deveRetornarBadgeTipoPrimeiroAcertoQuandoScorecardsFor1() {
+    void deveRetornarBadgeTipoPrimeiroAcertoQuandoScorecardsFor1() {
         Optional<BadgeTipo> badgeTipo = processador.processarBadgeOptional(10,
             List.of(new ScoreCard()),
             new DesafioTentativaRespostaRequest());
@@ -29,7 +29,7 @@ public class BadgeProcessadorPrimeiroAcertoTest {
 
     @Test
     @DisplayName("Deve retornar badge tipo vazio quando scorecards for diferente de 1")
-    public void deveRetornarBadgeTipoVazioQuandoScorecardsForDiferenteDe1() {
+    void deveRetornarBadgeTipoVazioQuandoScorecardsForDiferenteDe1() {
         Optional<BadgeTipo> badgeTipoA = processador.processarBadgeOptional(10,
             List.of(new ScoreCard(), new ScoreCard(), new ScoreCard()),
             new DesafioTentativaRespostaRequest());
@@ -44,7 +44,7 @@ public class BadgeProcessadorPrimeiroAcertoTest {
 
     @Test
     @DisplayName("Deve lançar excesão quando score cards for nulo")
-    public void deveLancarExcesaoQuandoScoreCardsForNulo() {
+    void deveLancarExcesaoQuandoScoreCardsForNulo() {
         Assertions
             .assertThatIllegalArgumentException()
             .isThrownBy(() -> processador.processarBadgeOptional(null, null, null))

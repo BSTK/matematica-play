@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(LiredesBoardController.class)
-public class LiredesBoardControllerTest {
+class LiredesBoardControllerTest {
 
     private static final String ENDPOINT_API_V1_LIDERES = "/api/v1/lideres";
 
@@ -32,7 +32,7 @@ public class LiredesBoardControllerTest {
 
     @Test
     @DisplayName("Deve retornar o LiredesBoard atual")
-    public void deveRetornarOLiredesBoardAtual() throws Exception {
+    void deveRetornarOLiredesBoardAtual() throws Exception {
         List<LiredesBoardLinha> liredesBoard = List.of(
             new LiredesBoardLinha(10L, 20L),
             new LiredesBoardLinha(20L, 30L),

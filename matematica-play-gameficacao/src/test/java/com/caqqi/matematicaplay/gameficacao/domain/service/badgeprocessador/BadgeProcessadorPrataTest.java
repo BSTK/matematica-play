@@ -13,13 +13,13 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
-public class BadgeProcessadorPrataTest {
+class BadgeProcessadorPrataTest {
 
     private BadgeProcessador processador = new BadgeProcessadorPrata();
 
     @Test
     @DisplayName("Deve retornar badge tipo prata quando total de pontos for maior que 150")
-    public void deveRetornarBadgeTipoPrataQuandoQuantidadeDeScorCardsForMaiorQue150() {
+    void deveRetornarBadgeTipoPrataQuandoQuantidadeDeScorCardsForMaiorQue150() {
         final List<ScoreCard> scoreCards = new ArrayList<>();
         IntStream
             .range(1, 152)
@@ -35,7 +35,7 @@ public class BadgeProcessadorPrataTest {
 
     @Test
     @DisplayName("Deve retornar badge tipo vazio quando quantidade de score cards for igual que 150")
-    public void deveRetornarBadgeTipoVazioQuandoQuantidadeDeScorCardsForIgualQue150() {
+    void deveRetornarBadgeTipoVazioQuandoQuantidadeDeScorCardsForIgualQue150() {
         final List<ScoreCard> scoreCards = new ArrayList<>();
         IntStream
             .range(1, 151)
@@ -49,7 +49,7 @@ public class BadgeProcessadorPrataTest {
 
     @Test
     @DisplayName("Deve retornar badge tipo vazio quando quantidade de score cards for menor que 150")
-    public void deveRetornarBadgeTipoVazioQuandoQuantidadeDeScorCardsForMenorQue150() {
+    void deveRetornarBadgeTipoVazioQuandoQuantidadeDeScorCardsForMenorQue150() {
         final List<ScoreCard> scoreCards = new ArrayList<>();
         IntStream
             .range(1, 150)
@@ -63,7 +63,7 @@ public class BadgeProcessadorPrataTest {
 
     @Test
     @DisplayName("Deve retornar badge tipo vazio quando quantidade de score cards for vazia")
-    public void deveRetornarBadgeTipoVazioQuandoQuantidadeDeScorCardsForVazia() {
+    void deveRetornarBadgeTipoVazioQuandoQuantidadeDeScorCardsForVazia() {
         Optional<BadgeTipo> badgeTipo = processador.processarBadgeOptional(1,
             Collections.emptyList(), new DesafioTentativaRespostaRequest());
 
@@ -72,7 +72,7 @@ public class BadgeProcessadorPrataTest {
 
     @Test
     @DisplayName("Deve lançar excesão quando score cards for nulo")
-    public void deveLancarExcesaoQuandoScoreCardsForNulo() {
+    void deveLancarExcesaoQuandoScoreCardsForNulo() {
         Assertions
             .assertThatIllegalArgumentException()
             .isThrownBy(() -> processador.processarBadgeOptional(null, null, null))

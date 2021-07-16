@@ -23,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(GameController.class)
-public class GameControllerTest {
+class GameControllerTest {
 
     private static final String ENDPOINT_API_V1_TENTATIVAS = "/api/v1/tentativas";
 
@@ -38,7 +38,7 @@ public class GameControllerTest {
 
     @Test
     @DisplayName("Deve postar uma nova tentativa do usuario")
-    public void devePostarUmaNovaTentativaDoUsuario() throws Exception {
+    void devePostarUmaNovaTentativaDoUsuario() throws Exception {
         final DesafioTentativaRespostaRequest request = new DesafioTentativaRespostaRequest();
         request.setFatorA(10);
         request.setFatorB(10);

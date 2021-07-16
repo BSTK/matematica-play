@@ -17,7 +17,7 @@ import java.util.List;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class LiredesBoardServiceTest {
+class LiredesBoardServiceTest {
 
     private LiredesBoardService liredesBoardService;
 
@@ -29,7 +29,7 @@ public class LiredesBoardServiceTest {
 
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         liredesBoardService = new LiredesBoardServiceImpl(
             scoreRepository,
             badgeRepository
@@ -38,7 +38,7 @@ public class LiredesBoardServiceTest {
 
     @Test
     @DisplayName("Deve retornar uma lista de LiredesBoardLinha válida")
-    public void deveUmaListaDeLiredesBoardLinhaValida() {
+    void deveUmaListaDeLiredesBoardLinhaValida() {
         final List<LiredesBoardLinha> liredesBoardLinhas = List.of(
             new LiredesBoardLinha(1L, 2L),
             new LiredesBoardLinha(10L, 20L),
@@ -60,7 +60,7 @@ public class LiredesBoardServiceTest {
 
     @Test
     @DisplayName("Deve retornar uma lista vazia quando scoreRepository não retornar resultado dos 10 primeiros scores [NULO]")
-    public void deveRetornarUmaListaVaziaQuandoScorerepositoryNaoRetornarResultadoDos10PrimeirosScoresNull() {
+    void deveRetornarUmaListaVaziaQuandoScorerepositoryNaoRetornarResultadoDos10PrimeirosScoresNull() {
         when(scoreRepository.obterOs10Scores()).thenReturn(null);
 
         final List<LiredesBoardLinha> liredesBoardAtual = liredesBoardService.getLiredesBoardAtual();
@@ -72,7 +72,7 @@ public class LiredesBoardServiceTest {
 
     @Test
     @DisplayName("Deve retornar uma lista vazia quando scoreRepository não retornar resultado dos 10 primeiros scores [VAZIO]")
-    public void deveRetornarUmaListaVaziaQuandoScorerepositoryNaoRetornarResultadoDos10PrimeirosScoresVazio() {
+    void deveRetornarUmaListaVaziaQuandoScorerepositoryNaoRetornarResultadoDos10PrimeirosScoresVazio() {
         when(scoreRepository.obterOs10Scores()).thenReturn(Collections.emptyList());
 
         final List<LiredesBoardLinha> liredesBoardAtual = liredesBoardService.getLiredesBoardAtual();

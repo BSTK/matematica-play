@@ -11,13 +11,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-public class BadgeProcessadorBronzeTest {
+class BadgeProcessadorBronzeTest {
 
     private BadgeProcessador processador = new BadgeProcessadorBronze();
 
     @Test
     @DisplayName("Deve retornar badge tipo bronze quando total de pontos for maior que 50")
-    public void deveRetornarBadgeTipoBrnonzeQuandoTotalPontosForMaiorQue50() {
+    void deveRetornarBadgeTipoBrnonzeQuandoTotalPontosForMaiorQue50() {
         Optional<BadgeTipo> badgeTipo = processador.processarBadgeOptional(51,
             List.of(new ScoreCard()),
             new DesafioTentativaRespostaRequest());
@@ -29,7 +29,7 @@ public class BadgeProcessadorBronzeTest {
 
     @Test
     @DisplayName("Deve retornar badge tipo vazio quando total de pontos for igual que 50")
-    public void deveRetornarBadgeTipoVazioQuandoTotalPontosForIgualQue50() {
+    void deveRetornarBadgeTipoVazioQuandoTotalPontosForIgualQue50() {
         Optional<BadgeTipo> badgeTipo = processador.processarBadgeOptional(50,
             Collections.emptyList(),
             new DesafioTentativaRespostaRequest());
@@ -39,7 +39,7 @@ public class BadgeProcessadorBronzeTest {
 
     @Test
     @DisplayName("Deve retornar badge tipo vazio quando total de pontos for menor que 50")
-    public void deveRetornarBadgeTipoVazioQuandoTotalPontosForMenorQue50() {
+    void deveRetornarBadgeTipoVazioQuandoTotalPontosForMenorQue50() {
         Optional<BadgeTipo> badgeTipo = processador.processarBadgeOptional(49,
             Collections.emptyList(),
             new DesafioTentativaRespostaRequest());
@@ -49,7 +49,7 @@ public class BadgeProcessadorBronzeTest {
 
     @Test
     @DisplayName("Deve retornar badge tipo vazio quando total de pontos for nulo")
-    public void deveRetornarBadgeTipoVazioQuandoTotalPontosForNulo() {
+    void deveRetornarBadgeTipoVazioQuandoTotalPontosForNulo() {
         Optional<BadgeTipo> badgeTipo = processador.processarBadgeOptional(null,
             Collections.emptyList(),
             new DesafioTentativaRespostaRequest());
