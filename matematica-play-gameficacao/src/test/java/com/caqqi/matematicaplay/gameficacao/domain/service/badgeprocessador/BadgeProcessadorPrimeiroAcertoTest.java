@@ -16,6 +16,14 @@ class BadgeProcessadorPrimeiroAcertoTest {
     private BadgeProcessador processador = new BadgeProcessadorPrimeiroAcerto();
 
     @Test
+    @DisplayName("Deve retornar o BadgeTipo Primeiro Acerto")
+    void deveRetornarOBadgeTipoPrimeiroAcerto() {
+        Assertions.assertThat(processador.tipo())
+            .isNotNull()
+            .isEqualTo(BadgeTipo.PRIMEIRO_ACERTO);
+    }
+
+    @Test
     @DisplayName("Deve retornar badge tipo primeiro acerto quando scorecards for 1")
     void deveRetornarBadgeTipoPrimeiroAcertoQuandoScorecardsFor1() {
         Optional<BadgeTipo> badgeTipo = processador.processarBadgeOptional(10,

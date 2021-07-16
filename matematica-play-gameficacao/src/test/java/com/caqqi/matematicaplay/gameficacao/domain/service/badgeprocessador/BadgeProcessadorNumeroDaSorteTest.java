@@ -15,6 +15,14 @@ class BadgeProcessadorNumeroDaSorteTest {
     private BadgeProcessador processador = new BadgeProcessadorNumeroDaSorte();
 
     @Test
+    @DisplayName("Deve retornar o BadgeTipo NumeroDaSorte")
+    void deveRetornarOBadgeTipoNumeroDaSorte() {
+        Assertions.assertThat(processador.tipo())
+            .isNotNull()
+            .isEqualTo(BadgeTipo.NUMERO_DA_SORTE);
+    }
+
+    @Test
     @DisplayName("Deve retornar badge tipo número da sorte quando fator A for 42")
     void deveRetornarBadgeTipoNumeroDaSorteQuandoFatorAFor42() {
         final DesafioTentativaRespostaRequest request = new DesafioTentativaRespostaRequest();

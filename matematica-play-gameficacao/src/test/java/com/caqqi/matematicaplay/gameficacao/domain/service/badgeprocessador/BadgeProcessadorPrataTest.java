@@ -18,6 +18,14 @@ class BadgeProcessadorPrataTest {
     private BadgeProcessador processador = new BadgeProcessadorPrata();
 
     @Test
+    @DisplayName("Deve retornar o BadgeTipo Prata")
+    void deveRetornarOBadgeTipoPrata() {
+        Assertions.assertThat(processador.tipo())
+            .isNotNull()
+            .isEqualTo(BadgeTipo.PRATA);
+    }
+
+    @Test
     @DisplayName("Deve retornar badge tipo prata quando total de pontos for maior que 150")
     void deveRetornarBadgeTipoPrataQuandoQuantidadeDeScorCardsForMaiorQue150() {
         final List<ScoreCard> scoreCards = new ArrayList<>();

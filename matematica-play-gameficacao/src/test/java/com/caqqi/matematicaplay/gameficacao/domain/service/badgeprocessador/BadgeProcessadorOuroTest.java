@@ -16,6 +16,14 @@ class BadgeProcessadorOuroTest {
     private BadgeProcessador processador = new BadgeProcessadorOuro();
 
     @Test
+    @DisplayName("Deve retornar o BadgeTipo Ouro")
+    void deveRetornarOBadgeTipoOuro() {
+        Assertions.assertThat(processador.tipo())
+            .isNotNull()
+            .isEqualTo(BadgeTipo.OURO);
+    }
+
+    @Test
     @DisplayName("Deve retornar badge tipo prata quando total de pontos for maior que 400")
     void deveRetornarBadgeTipoOuroQuandoTotalDePontosForMaiorQue400() {
         Optional<BadgeTipo> badgeTipo = processador.processarBadgeOptional(401,
