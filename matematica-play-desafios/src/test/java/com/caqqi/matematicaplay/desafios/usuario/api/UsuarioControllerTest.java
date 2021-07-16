@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(UsuarioController.class)
-public class UsuarioControllerTest {
+class UsuarioControllerTest {
 
     private static final String ENDPOINT_API_V1_USUARIOS = "/api/v1/usuarios";
 
@@ -33,7 +33,7 @@ public class UsuarioControllerTest {
 
     @Test
     @DisplayName("Deve retornar uma lista de usuarios por id")
-    public void deveRetornarUmaListaDeUsuariosPorId() throws Exception {
+    void deveRetornarUmaListaDeUsuariosPorId() throws Exception {
         List<Usuario> usuarios = List.of(
             new Usuario("apelido-a"),
             new Usuario("apelido-b"),
@@ -54,7 +54,7 @@ public class UsuarioControllerTest {
 
     @Test
     @DisplayName("Deve retornar um usuário por apelido")
-    public void deveRetornarUmUsuarioPorApelido() throws Exception {
+    void deveRetornarUmUsuarioPorApelido() throws Exception {
         when(usuarioService.usuarioPorApelido("apelido-a"))
             .thenReturn(new Usuario("apelido-a"));
 

@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(DesafioTentativaController.class)
-public class DesafioTentativaControllerTest {
+class DesafioTentativaControllerTest {
 
     private static final String ENDPOINT_API_V1_TENTATIVAS = "/api/v1/tentativas";
 
@@ -41,7 +41,7 @@ public class DesafioTentativaControllerTest {
 
     @Test
     @DisplayName("Deve postar uma tentativa com resultado correto")
-    public void devePostarUmaTentativaComResultadoCorreto() throws Exception {
+    void devePostarUmaTentativaComResultadoCorreto() throws Exception {
         final Usuario usuario = new Usuario(1L, "UsuarioAA");
         final Long tentativaId = 1L;
 
@@ -72,7 +72,7 @@ public class DesafioTentativaControllerTest {
 
     @Test
     @DisplayName("Deve postar uma tentativa com request inválido (Operação Inválida)")
-    public void devePostarUmaTentativaComRequestInvalido_OperacaoInvalida() throws Exception {
+    void devePostarUmaTentativaComRequestInvalido_OperacaoInvalida() throws Exception {
         final DesafioTentativaRespostaRequest request = new DesafioTentativaRespostaRequest(
             50, 50, 100, "#", "Jhon");
 
@@ -85,7 +85,7 @@ public class DesafioTentativaControllerTest {
 
     @Test
     @DisplayName("Deve postar uma tentativa com request inválido (FatorA negativo)")
-    public void devePostarUmaTentativaComRequestInvalido_FatorANegativo() throws Exception {
+    void devePostarUmaTentativaComRequestInvalido_FatorANegativo() throws Exception {
         final DesafioTentativaRespostaRequest request = new DesafioTentativaRespostaRequest(
             -1, 50, 100, DesafioOperacao.SUBTRACAO.getOperador(), "Jhon");
 
@@ -98,7 +98,7 @@ public class DesafioTentativaControllerTest {
 
     @Test
     @DisplayName("Deve postar uma tentativa com request inválido (FatorA maior que 99)")
-    public void devePostarUmaTentativaComRequestInvalido_FatorAMaiorQue99() throws Exception {
+    void devePostarUmaTentativaComRequestInvalido_FatorAMaiorQue99() throws Exception {
         final DesafioTentativaRespostaRequest request = new DesafioTentativaRespostaRequest(
             999, 50, 100, DesafioOperacao.SUBTRACAO.getOperador(), "Jhon");
 
@@ -111,7 +111,7 @@ public class DesafioTentativaControllerTest {
 
     @Test
     @DisplayName("Deve postar uma tentativa com request inválido (FatorB negativo)")
-    public void devePostarUmaTentativaComRequestInvalido_FatorBNegativo() throws Exception {
+    void devePostarUmaTentativaComRequestInvalido_FatorBNegativo() throws Exception {
         final DesafioTentativaRespostaRequest request = new DesafioTentativaRespostaRequest(
             10, -1, 100, DesafioOperacao.SUBTRACAO.getOperador(), "Jhon");
 
@@ -124,7 +124,7 @@ public class DesafioTentativaControllerTest {
 
     @Test
     @DisplayName("Deve postar uma tentativa com request inválido (FatorB maior que 99)")
-    public void devePostarUmaTentativaComRequestInvalido_FatorBMaiorQue99() throws Exception {
+    void devePostarUmaTentativaComRequestInvalido_FatorBMaiorQue99() throws Exception {
         final DesafioTentativaRespostaRequest request = new DesafioTentativaRespostaRequest(
             10, 999, 100, DesafioOperacao.SUBTRACAO.getOperador(), "Jhon");
 
@@ -137,7 +137,7 @@ public class DesafioTentativaControllerTest {
 
     @Test
     @DisplayName("Deve postar uma tentativa com request inválido (Resposta negativo)")
-    public void devePostarUmaTentativaComRequestInvalido_RespostaNegativo() throws Exception {
+    void devePostarUmaTentativaComRequestInvalido_RespostaNegativo() throws Exception {
         final DesafioTentativaRespostaRequest request = new DesafioTentativaRespostaRequest(
             10, 999, -1, DesafioOperacao.SUBTRACAO.getOperador(), "Jhon");
 
@@ -150,7 +150,7 @@ public class DesafioTentativaControllerTest {
 
     @Test
     @DisplayName("Deve postar uma tentativa com request inválido (Resposta negativo)")
-    public void devePostarUmaTentativaComRequestInvalido_ApelidoNulo() throws Exception {
+    void devePostarUmaTentativaComRequestInvalido_ApelidoNulo() throws Exception {
         final DesafioTentativaRespostaRequest request = new DesafioTentativaRespostaRequest(
             10, 10, -1, DesafioOperacao.SUBTRACAO.getOperador(), null);
 
@@ -163,7 +163,7 @@ public class DesafioTentativaControllerTest {
 
     @Test
     @DisplayName("Deve postar uma tentativa com request inválido (Resposta negativo)")
-    public void devePostarUmaTentativaComRequestInvalido_ApelidoVazio() throws Exception {
+    void devePostarUmaTentativaComRequestInvalido_ApelidoVazio() throws Exception {
         final DesafioTentativaRespostaRequest request = new DesafioTentativaRespostaRequest(
             10, 10, 0, DesafioOperacao.SUBTRACAO.getOperador(), "");
 
@@ -176,7 +176,7 @@ public class DesafioTentativaControllerTest {
 
     @Test
     @DisplayName("Deve postar uma tentativa com request inválido (Resposta negativo)")
-    public void devePostarUmaTentativaComRequestInvalido_ApelidoBranco() throws Exception {
+    void devePostarUmaTentativaComRequestInvalido_ApelidoBranco() throws Exception {
         final DesafioTentativaRespostaRequest request = new DesafioTentativaRespostaRequest(
             10, 10, 0, DesafioOperacao.SUBTRACAO.getOperador(), "  ");
 

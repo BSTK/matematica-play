@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(DesafioController.class)
-public class DesafioControllerTest {
+class DesafioControllerTest {
 
     private static final String ENDPOINT_API_V1_DESAFIOS = "/api/v1/desafios";
 
@@ -31,7 +31,7 @@ public class DesafioControllerTest {
 
     @Test
     @DisplayName("Deve retornar um resafio aleatorio")
-    public void deveRetornarUmResafioAleatorio() throws Exception {
+    void deveRetornarUmResafioAleatorio() throws Exception {
         final Desafio desafio = new Desafio(10, 10, new int[] {1, 2, 3, 20}, "+");
         when(desafioGeradorService.gerarDesafioAleatorio()).thenReturn(desafio);
 

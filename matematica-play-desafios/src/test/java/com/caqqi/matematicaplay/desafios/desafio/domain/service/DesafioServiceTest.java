@@ -29,7 +29,7 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-public class DesafioServiceTest {
+class DesafioServiceTest {
 
     private DesafioService desafioService;
 
@@ -43,7 +43,7 @@ public class DesafioServiceTest {
     private DesafioTentativaRespostaRepository desafioTentativaRespostaRepository;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         desafioService = new DesafioServiceImpl(
             usuarioRepository,
             gameficacaoServiceCliente,
@@ -53,7 +53,7 @@ public class DesafioServiceTest {
 
     @Test
     @DisplayName("Deve retornar as ultimas tentativas por usuario")
-    public void deveRetornarAsUltimasTentativasPorUsuario() {
+    void deveRetornarAsUltimasTentativasPorUsuario() {
         given(desafioTentativaRespostaRepository.findTop10ByUsuarioApelidoOrderByIdDesc(anyString()))
             .willReturn(Collections.emptyList());
 
@@ -67,7 +67,7 @@ public class DesafioServiceTest {
 
     @Test
     @DisplayName("Verifica usuário já existente")
-    public void verificaUsuarioJaExistente() {
+    void verificaUsuarioJaExistente() {
         given(desafioTentativaRespostaRepository.save(any())).will(returnsFirstArg());
 
         Usuario usuario = new Usuario("USUARIO_AA");
@@ -89,7 +89,7 @@ public class DesafioServiceTest {
 
     @Test
     @DisplayName("Verifica tentativa de resposta correta operacao soma")
-    public void verificaTentativaDeRespostaCorretaOperacaoSoma() {
+    void verificaTentativaDeRespostaCorretaOperacaoSoma() {
         DesafioTentativaRespostaRequest tentativaRequest = new DesafioTentativaRespostaRequest(
             10, 10, 20, "+", "UsuarioAAB");
 
@@ -98,7 +98,7 @@ public class DesafioServiceTest {
 
     @Test
     @DisplayName("Verifica tentativa de resposta errada operacao soma")
-    public void verificaTentativaDeRespostaErradaOperacaoSoma() {
+    void verificaTentativaDeRespostaErradaOperacaoSoma() {
         DesafioTentativaRespostaRequest tentativaRequest = new DesafioTentativaRespostaRequest(
             10, 10, 25, "+", "UsuarioAAB");
 
@@ -107,7 +107,7 @@ public class DesafioServiceTest {
 
     @Test
     @DisplayName("Verifica tentativa de resposta correta operacao subtração")
-    public void verificaTentativaDeRespostaCorretaOperacaoSubtracao() {
+    void verificaTentativaDeRespostaCorretaOperacaoSubtracao() {
         DesafioTentativaRespostaRequest tentativaRequest = new DesafioTentativaRespostaRequest(
             10, 10, 0, "-", "UsuarioAAB");
 
@@ -116,7 +116,7 @@ public class DesafioServiceTest {
 
     @Test
     @DisplayName("Verifica tentativa de resposta errada operacao subtração")
-    public void verificaTentativaDeRespostaErradaOperacaoSubtracao() {
+    void verificaTentativaDeRespostaErradaOperacaoSubtracao() {
         DesafioTentativaRespostaRequest tentativaRequest = new DesafioTentativaRespostaRequest(
             10, 10, 25, "-", "UsuarioAAB");
 
@@ -125,7 +125,7 @@ public class DesafioServiceTest {
 
     @Test
     @DisplayName("Verifica tentativa de resposta correta operacao divisao")
-    public void verificaTentativaDeRespostaCorretaOperacaoDivisao() {
+    void verificaTentativaDeRespostaCorretaOperacaoDivisao() {
         DesafioTentativaRespostaRequest tentativaRequest = new DesafioTentativaRespostaRequest(
             10, 10, 1, "/", "UsuarioAAB");
 
@@ -134,7 +134,7 @@ public class DesafioServiceTest {
 
     @Test
     @DisplayName("Verifica tentativa de resposta errada operacao divisao")
-    public void verificaTentativaDeRespostaErradaOperacaoDivisao() {
+    void verificaTentativaDeRespostaErradaOperacaoDivisao() {
         DesafioTentativaRespostaRequest tentativaRequest = new DesafioTentativaRespostaRequest(
             10, 10, 0, "/", "UsuarioAAB");
 
@@ -143,7 +143,7 @@ public class DesafioServiceTest {
 
     @Test
     @DisplayName("Verifica tentativa de resposta correta operacao multiplicacao")
-    public void verificaTentativaDeRespostaCorretaOperacaoMultiplicacao() {
+    void verificaTentativaDeRespostaCorretaOperacaoMultiplicacao() {
         DesafioTentativaRespostaRequest tentativaRequest = new DesafioTentativaRespostaRequest(
             10, 10, 100, "*", "UsuarioAAB");
 
@@ -152,7 +152,7 @@ public class DesafioServiceTest {
 
     @Test
     @DisplayName("Verifica tentativa de resposta errada operacao multiplicacao")
-    public void verificaTentativaDeRespostaErradaOperacaoMultiplicacao() {
+    void verificaTentativaDeRespostaErradaOperacaoMultiplicacao() {
         DesafioTentativaRespostaRequest tentativaRequest = new DesafioTentativaRespostaRequest(
             10, 10, 99, "*", "UsuarioAAB");
 

@@ -7,7 +7,7 @@ import com.tngtech.archunit.lang.syntax.ArchRuleDefinition;
 import org.springframework.web.bind.annotation.RestController;
 
 @AnalyzeClasses(packages = ArchUnitUtil.Desafio.PACOTE_BASE)
-public class ArchUnitRegrasService {
+class ArchUnitRegrasService {
 
     @ArchTest
     private static ArchRule na_camada_de_service_nao_pode_ter_classes_controller =

@@ -9,13 +9,13 @@ import org.junit.jupiter.api.Test;
 import javax.validation.Payload;
 import java.lang.annotation.Annotation;
 
-public class ContainsValidatorTest {
+class ContainsValidatorTest {
 
     private ContainsValidator validator = new ContainsValidator();
 
     @Test
     @DisplayName("Deve retonar TRUE para validacao invalida")
-    public void deveRetonarTrueParaValidacaoInvalida() {
+    void deveRetonarTrueParaValidacaoInvalida() {
         validator.initialize(annotationImpl(new String[] { "+", "@" }));
 
         Assertions.assertThat(validator.isValid("+", null)).isTrue();
@@ -24,7 +24,7 @@ public class ContainsValidatorTest {
 
     @Test
     @DisplayName("Deve retonar FALSE para validacao valida")
-    public void deveRetonarFalseParaValidacaoValida() {
+    void deveRetonarFalseParaValidacaoValida() {
         validator.initialize(annotationImpl(new String[] { "+", "@" }));
 
         Assertions.assertThat(validator.isValid("%", null)).isFalse();
@@ -35,14 +35,14 @@ public class ContainsValidatorTest {
 
     @Test
     @DisplayName("Deve retonar FALSE para validacao valida - Range não definido (nulo)")
-    public void deveRetonarFalseParaValidacaoValida_RangeNaoDefinidoNulo() {
+    void deveRetonarFalseParaValidacaoValida_RangeNaoDefinidoNulo() {
         validator.initialize(annotationImpl(null));
         Assertions.assertThat(validator.isValid("@", null)).isFalse();
     }
 
     @Test
     @DisplayName("Deve retonar FALSE para validacao valida - Range não definido (vazio)")
-    public void deveRetonarFalseParaValidacaoValida_RangeNaoDefinidoVazio() {
+    void deveRetonarFalseParaValidacaoValida_RangeNaoDefinidoVazio() {
         validator.initialize(annotationImpl(new String[] {}));
         Assertions.assertThat(validator.isValid("@", null)).isFalse();
     }

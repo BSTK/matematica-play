@@ -19,7 +19,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class UsuarioServiceTest {
+class UsuarioServiceTest {
 
     private UsuarioService usuarioService;
 
@@ -27,13 +27,13 @@ public class UsuarioServiceTest {
     private UsuarioRepository usuarioRepository;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         usuarioService = new UsuarioService(usuarioRepository);
     }
 
     @Test
     @DisplayName("Deve retornar uma lista de usuarios por id")
-    public void deveRetornarUmaListaDeUsuariosPorId() {
+    void deveRetornarUmaListaDeUsuariosPorId() {
         List<Usuario> usuarios = List.of(
             new Usuario("apelido-a"),
             new Usuario("apelido-b"),
@@ -52,7 +52,7 @@ public class UsuarioServiceTest {
 
     @Test
     @DisplayName("Deve retornar uma lista de usuarios vazia quando não houver usuario cadastrados com ids informados")
-    public void deveRetornarUmaListaDeUsuariosVaziaQuandoNaoHouverUsuarioCadastradosComIdsInformados() {
+    void deveRetornarUmaListaDeUsuariosVaziaQuandoNaoHouverUsuarioCadastradosComIdsInformados() {
         when(usuarioRepository.findAllById(anyList())).thenReturn(Collections.emptyList());
 
         List<Usuario> usuariosPorId = usuarioService.usuariosPorIds(List.of(1L, 2L, 3L));
@@ -64,7 +64,7 @@ public class UsuarioServiceTest {
 
     @Test
     @DisplayName("Deve retornar um usuário por apelido")
-    public void deveRetornarUmUsuarioPorApelido() {
+    void deveRetornarUmUsuarioPorApelido() {
         when(usuarioRepository.buscarPorApelido(anyString()))
             .thenReturn(Optional.of(new Usuario("apelido-a")));
 
@@ -76,7 +76,7 @@ public class UsuarioServiceTest {
 
     @Test
     @DisplayName("Deve lancar excesão ao buscar um usuário por apelido")
-    public void deveLancarExcesaoAoBuscarUmUsuarioPorApelido() {
+    void deveLancarExcesaoAoBuscarUmUsuarioPorApelido() {
         when(usuarioRepository.buscarPorApelido(anyString())).thenReturn(Optional.empty());
 
         Assertions.assertThatThrownBy(() -> usuarioService.usuarioPorApelido("apelido-a"))

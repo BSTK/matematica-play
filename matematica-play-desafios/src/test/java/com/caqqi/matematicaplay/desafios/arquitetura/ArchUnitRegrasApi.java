@@ -7,7 +7,7 @@ import com.tngtech.archunit.lang.syntax.ArchRuleDefinition;
 import org.springframework.stereotype.Service;
 
 @AnalyzeClasses(packages = ArchUnitUtil.Desafio.PACOTE_BASE)
-public class ArchUnitRegrasApi {
+class ArchUnitRegrasApi {
 
     @ArchTest
     private static ArchRule na_camada_de_api_nao_pode_ter_classes_services =

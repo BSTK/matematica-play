@@ -18,7 +18,7 @@ import java.util.Random;
 import static org.mockito.BDDMockito.given;
 
 @ExtendWith(MockitoExtension.class)
-public class DesafioGeradorServiceTest {
+class DesafioGeradorServiceTest {
 
     @Spy
     private Random random;
@@ -26,14 +26,14 @@ public class DesafioGeradorServiceTest {
     private DesafioGeradorService desafioGeradorService;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         desafioGeradorService = new DesafioGeradorServiceImpl(random);
     }
 
     @ParameterizedTest
     @CsvSource({ "0,+", "1,/", "2,-", "3,*" })
     @DisplayName("Deve gerar um desafio aleatorio entre limites esperados com uma operacao")
-    public void deveGerarUmDesafioAleatorioEntreLimitesEsperadosComOperacaoDeAdicao(final Integer index,
+    void deveGerarUmDesafioAleatorioEntreLimitesEsperadosComOperacaoDeAdicao(final Integer index,
                                                                                     final String operacao) {
         given(random.nextInt(89)).willReturn(20, 30);
         given(random.nextInt(DesafioOperacao.values().length)).willReturn(index);
