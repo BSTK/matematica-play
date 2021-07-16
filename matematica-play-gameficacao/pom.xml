@@ -23,8 +23,8 @@
 
         <!-- Config SonarQube Cloud -->
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <sonar.projectKey>BSTK_matematica-play</sonar.projectKey>
         <sonar.organization>bstk-sonar-qube-cloud</sonar.organization>
+        <sonar.projectKey>bstk-sonar-qube-cloud_matematica-play-gamificacao</sonar.projectKey>
     </properties>
 
     <dependencies>
