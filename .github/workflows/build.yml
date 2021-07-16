@@ -1,4 +1,4 @@
-name: Build - Desafios
+name: Build
 on:
   push:
     branches:
@@ -14,25 +14,36 @@ jobs:
         with:
           # Shallow clones should be disabled for a better relevancy of analysis
           fetch-depth: 0
+      
       - name: Set up JDK 11
         uses: actions/setup-java@v1
         with:
           java-version: 11
+      
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
+      
       - name: Cache Maven packages
         uses: actions/cache@v1
         with:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      - name: Build and analyze
+      
+      - name: SonarQube - Matematica Play Desafios
         env:
           # Needed to get PR information, if any
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_DESAFIOS }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+        run: cd matematica-play-desafios && mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+      
+      - name: SonarQube - Matematica Play Gamificacao
+        env:
+          # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_GAMIFICACAO }}
+        run: cd matematica-play-gameficacao && mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
