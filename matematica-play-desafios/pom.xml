@@ -21,6 +21,7 @@
 		<java.version>11</java.version>
 		<modelmapper.version>2.3.0</modelmapper.version>
 
+		<!-- Config SonarQube Cloud -->
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<sonar.projectKey>BSTK_matematica-play</sonar.projectKey>
 		<sonar.organization>bstk-sonar-qube-cloud</sonar.organization>
