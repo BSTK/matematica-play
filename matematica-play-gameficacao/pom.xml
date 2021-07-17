@@ -125,9 +125,9 @@
                 <version>${jacoco.version}</version>
                 <configuration>
                     <excludes>
-                        <exclude>**/*Request.java</exclude>
-                        <exclude>**/*Response.java</exclude>
-                        <exclude>**/entity</exclude>
+                        <exclude>**/**Request.java</exclude>
+                        <exclude>**/**Response.java</exclude>
+                        <exclude>**/entity/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
