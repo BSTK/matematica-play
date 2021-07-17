@@ -125,10 +125,12 @@
                 <version>${jacoco.version}</version>
                 <configuration>
                     <excludes>
-                        <exclude>com.caqqi.matematicaplay.gameficacao/**/**Request.*</exclude>
-                        <exclude>com.caqqi.matematicaplay.gameficacao/**/**Response.*</exclude>
+                        <exclude>com.caqqi.matematicaplay.gameficacao/**/*Request.*</exclude>
+                        <exclude>com.caqqi.matematicaplay.gameficacao/**/*Response.*</exclude>
                         <exclude>com.caqqi.matematicaplay.gameficacao/**/entity/*</exclude>
                         <exclude>com.caqqi.matematicaplay.gameficacao/App.class</exclude>
+                        <exclude>com.caqqi.matematicaplay.gameficacao/App.java</exclude>
+                        <exclude>com.caqqi.matematicaplay.gameficacao/App.*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
