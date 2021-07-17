@@ -1,5 +1,6 @@
 package com.caqqi.matematicaplay.gameficacao.domain.entity;
 
+import com.caqqi.matematicaplay.gameficacao.core.config.Generated;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
+@Generated
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "SCORE_CARD")

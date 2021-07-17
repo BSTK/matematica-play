@@ -1,5 +1,6 @@
 package com.caqqi.matematicaplay.gameficacao.api.request;
 
+import com.caqqi.matematicaplay.gameficacao.core.config.Generated;
 import com.caqqi.matematicaplay.gameficacao.validation.Contains;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,6 +12,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Data
+@Generated
 @NoArgsConstructor
 @AllArgsConstructor
 public class DesafioTentativaRespostaRequest {
