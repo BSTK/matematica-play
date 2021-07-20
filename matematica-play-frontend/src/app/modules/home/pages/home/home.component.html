@@ -22,49 +22,57 @@
 
 </div>
 
-<div class="row text-center">
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">Desafio</th>
-      <th scope="col">Tentativa</th>
-      <th scope="col">Resposta</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let tentativa of desafioTentativas"
-        [ngClass]="tentativa.correta ? 'acertou' : 'errou'">
-      <th>
-        {{ tentativa.fatorA }}
-        {{ tentativa.operacao }}
-        {{ tentativa.fatorB }}
-      </th>
-      <td>{{ tentativa.resultado }}</td>
-      <td>{{ tentativa.correta ? 'Acertou (-:' : 'Errou /-:' }}</td>
-    </tr>
-    </tbody>
-  </table>
+<div class="row mt-5 p-3">
+  <div class="col-md-6">
+    <h2>Ultimas tentativas</h2>
+    <div class="row text-center p-2">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Desafio</th>
+          <th scope="col">Tentativa</th>
+          <th scope="col">Resposta</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let tentativa of desafioTentativas"
+            [ngClass]="tentativa.correta ? 'acertou' : 'errou'">
+          <th>
+            {{ tentativa.fatorA }}
+            {{ tentativa.operacao }}
+            {{ tentativa.fatorB }}
+          </th>
+          <td>{{ tentativa.resultado }}</td>
+          <td>{{ tentativa.correta ? 'Acertou (-:' : 'Errou /-:' }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="row text-center p-2">
+      <h2>Leader Board</h2>
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Usuário</th>
+          <th scope="col">Pontos</th>
+          <th scope="col">Badges</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th>Usuario-A</th>
+          <td>10</td>
+          <td>
+            <span class="badge badge-pill badge-ouro">Ouro</span>
+            <span class="badge badge-pill badge-numero-sorte">Número da Sorte</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
-<div class="row text-center">
-  <h1>Leader Board</h1>
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">Usuário</th>
-      <th scope="col">Pontos</th>
-      <th scope="col">Badges</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <th>Usuario-A</th>
-      <td>10</td>
-      <td>
-        <span class="badge badge-pill badge-ouro">Ouro</span>
-        <span class="badge badge-pill badge-numero-sorte">Número da Sorte</span>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>

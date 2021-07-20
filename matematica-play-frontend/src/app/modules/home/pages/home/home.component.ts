@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HomeService} from '../../service/home.service';
 import {Desafio, DesafioTentativa, DesafioTentativaResposta} from '../../service/desafio.model';
+import {LideresBoardLinha} from '../../service/lideres-board-linha.model';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ export class HomeComponent implements OnInit {
   
   public desafio: Desafio = new Desafio();
   public desafioTentativas: DesafioTentativaResposta[] = [];
+  public lideres: LideresBoardLinha[] = [];
   
   public classAcertoErro: string = '';
   public menssagemAcertoErro: string = '';
@@ -43,6 +45,7 @@ export class HomeComponent implements OnInit {
         setTimeout(() => {
           this.resetar();
           this.novoDesafio();
+          this.leaderBoard();
         }, 1000);
       });
   }
@@ -78,6 +81,16 @@ export class HomeComponent implements OnInit {
   private resetar() {
     this.classAcertoErro = '';
     this.menssagemAcertoErro = '';
+  }
+  
+  private leaderBoard() {
+    this.homeService
+      .lideres()
+      .subscribe((lideres: LideresBoardLinha[]) => {
+        if (lideres) {
+          console.log('lideres ==> ', lideres);
+        }
+      });
   }
 
 }

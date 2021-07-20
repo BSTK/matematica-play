@@ -3,6 +3,7 @@ import {Api} from '../../../app.api';
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Desafio, DesafioTentativa, DesafioTentativaResposta} from './desafio.model';
+import {LiredesBoardLinha} from './lideres-board-linha.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,10 @@ export class HomeService {
     return this
       .httpClient
       .post<DesafioTentativaResposta>(Api.URLS.tentativas.verificarResposta, tentativa);
+  }
+  
+  public lideres(): Observable<LiredesBoardLinha[]> {
+    return this.httpClient.get<LiredesBoardLinha[]>(Api.URLS.lideres.lideres);
   }
   
 }
